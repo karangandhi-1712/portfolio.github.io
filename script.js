@@ -1,234 +1,200 @@
-// script.js — updated: theme toggle, button interactions, reveal on scroll, form handling
-(function () {
-  /* ------------------ helpers ------------------ */
-  const $ = (s, ctx = document) => (ctx || document).querySelector(s);
-  const $$ = (s, ctx = document) =>
-    Array.from((ctx || document).querySelectorAll(s));
-  const prefersReducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
-
-  /* ------------------ THEME ------------------ */
-  const root = document.documentElement;
-  const container = $("#page") || document.body;
-  const themeToggle = $("#themeToggle");
-  const themeStatus = $("#themeStatus");
-
-  // Possible modes: "light", "dark", "auto"
-  function getStoredTheme() {
-    try {
-      return localStorage.getItem("site-theme");
-    } catch (e) {
-      return null;
-    }
-  }
-  function storeTheme(v) {
-    try {
-      localStorage.setItem("site-theme", v);
-    } catch (e) {}
-  }
-
-  function applyTheme(mode) {
-    // mode: 'light' | 'dark' | 'auto'
-    if (!container) return;
-    if (mode === "auto") {
-      // use system setting
-      const systemDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      container.setAttribute("data-theme", systemDark ? "dark" : "light");
+// Typing animation for name/title in hero
+const typedName = document.getElementById("typed-name");
+const cursor = document.getElementById("typed-cursor");
+if (typedName && cursor) {
+  const texts = ["Karan Gandhi", "Fullstack Developer", "Rustacean"];
+  let textIdx = 0;
+  let i = 0;
+  let typing = true;
+  function typeLoop() {
+    const current = texts[textIdx];
+    if (typing) {
+      if (i <= current.length) {
+        typedName.textContent = current.slice(0, i);
+        i++;
+        setTimeout(typeLoop, 110);
+      } else {
+        typing = false;
+        setTimeout(typeLoop, 900);
+      }
     } else {
-      container.setAttribute("data-theme", mode);
+      if (i > 0) {
+        typedName.textContent = current.slice(0, i - 1);
+        i--;
+        setTimeout(typeLoop, 60);
+      } else {
+        typing = true;
+        textIdx = (textIdx + 1) % texts.length;
+        setTimeout(typeLoop, 400);
+      }
     }
-    // update toggle aria
-    if (themeToggle)
-      themeToggle.setAttribute(
-        "aria-pressed",
-        mode === "dark" ? "true" : "false"
-      );
-    if (themeStatus) themeStatus.textContent = `Theme set to ${mode}`;
   }
+  typeLoop();
+  // Blinking cursor
+  setInterval(() => {
+    cursor.style.visibility =
+      cursor.style.visibility === "hidden" ? "visible" : "hidden";
+  }, 500);
+}
 
-  // Cycle theme on toggle: auto -> dark -> light -> auto
-  function nextTheme(current) {
-    if (current === "auto") return "dark";
-    if (current === "dark") return "light";
-    return "auto";
+// Three.js floating cube in hero
+if (window.THREE && document.getElementById("three-hero-cube")) {
+  const canvas = document.getElementById("three-hero-cube");
+  const width = 120;
+  const height = 120;
+  canvas.width = width;
+  canvas.height = height;
+  const renderer = new THREE.WebGLRenderer({
+    canvas,
+    alpha: true,
+    antialias: true,
+  });
+  renderer.setClearColor(0x000000, 0);
+  renderer.setSize(width, height, false);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, width / height, 1, 1000);
+  camera.position.z = 180;
+  // Cube
+  const geometry = new THREE.BoxGeometry(48, 48, 48);
+  const material = new THREE.MeshStandardMaterial({
+    color: 0x2563eb,
+    metalness: 0.5,
+    roughness: 0.3,
+  });
+  const cube = new THREE.Mesh(geometry, material);
+  scene.add(cube);
+  // Light
+  const light = new THREE.PointLight(0xffffff, 1, 500);
+  light.position.set(60, 80, 120);
+  scene.add(light);
+  // Animate
+  function animateCube() {
+    cube.rotation.x += 0.012;
+    cube.rotation.y += 0.018;
+    renderer.render(scene, camera);
+    requestAnimationFrame(animateCube);
   }
+  animateCube();
+}
+// Professional Portfolio JS
+document.addEventListener("DOMContentLoaded", function () {
+  // Theme toggle
+  const themeBtn = document.getElementById("theme-toggle");
+  function setTheme(dark) {
+    if (dark) {
+      document.body.classList.add("dark");
+      themeBtn.textContent = "☀️";
+    } else {
+      document.body.classList.remove("dark");
+      themeBtn.textContent = "🌙";
+    }
+    localStorage.setItem("theme", dark ? "dark" : "light");
+  }
+  // Load theme from storage or system
+  const userTheme = localStorage.getItem("theme");
+  const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  setTheme(userTheme === "dark" || (!userTheme && systemDark));
+  themeBtn.addEventListener("click", function () {
+    setTheme(!document.body.classList.contains("dark"));
+  });
 
-  // init
-  (function initTheme() {
-    let mode = getStoredTheme() || "auto";
-    applyTheme(mode);
-    // Make header button reflect actual state (visual update only)
-    if (themeToggle) {
-      themeToggle.addEventListener("click", (e) => {
+  // Smooth scroll for nav links and buttons
+  document.querySelectorAll("a.nav-link, .btn").forEach((link) => {
+    link.addEventListener("click", function (e) {
+      const href = link.getAttribute("href");
+      if (href && href.startsWith("#")) {
         e.preventDefault();
-        mode = nextTheme(mode);
-        storeTheme(mode);
-        applyTheme(mode);
-      });
-
-      // keyboard friendly: Enter/Space
-      themeToggle.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          themeToggle.click();
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
         }
-      });
-    }
-  })();
-
-  /* ------------------ Smooth scroll for anchors ------------------ */
-  function smoothScrollToId(hash) {
-    if (!hash) return;
-    const id = hash.replace(/^#/, "");
-    const el = document.getElementById(id);
-    if (!el) return;
-    if (prefersReducedMotion) el.scrollIntoView();
-    else el.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-  $$('a[href^="#"]').forEach((a) => {
-    a.addEventListener("click", (e) => {
-      const href = a.getAttribute("href");
-      if (!href || href === "#") return;
-      if (href.startsWith("#")) {
-        e.preventDefault();
-        history.pushState(null, "", href);
-        smoothScrollToId(href);
       }
     });
   });
 
-  /* ------------------ Fade-up reveal ------------------ */
-  (function reveal() {
-    const els = $$(".fade-up");
-    if (prefersReducedMotion) {
-      els.forEach((el) => el.classList.add("visible"));
-      return;
-    }
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting) {
-            e.target.classList.add("visible");
-            io.unobserve(e.target);
-          }
-        }
-      },
-      { threshold: 0.12 }
-    );
-    els.forEach((el) => io.observe(el));
-  })();
-
-  /* ------------------ Buttons: keyboard/press accessibility / micro-feedback  ------------------ */
-  // For interactive elements with .btn, set aria-pressed when activated via keyboard/mouse briefly so :active styles can be applied accessibly
-  $$(".btn").forEach((btn) => {
-    // mouse down -> pressed state
-    btn.addEventListener("pointerdown", () => {
-      btn.setAttribute("data-pressed", "true");
-      setTimeout(() => btn.removeAttribute("data-pressed"), 120);
-    });
-
-    // keyboard activation: Enter/Space
-    btn.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        btn.setAttribute("data-pressed", "true");
-        setTimeout(() => btn.removeAttribute("data-pressed"), 120);
-      }
-    });
-
-    // allow toggles to have aria-pressed semantics if they have role or data-toggle
-    if (btn.dataset.toggle === "true") {
-      btn.setAttribute("role", "button");
-      btn.setAttribute("aria-pressed", "false");
-      btn.addEventListener("click", () => {
-        const cur = btn.getAttribute("aria-pressed") === "true";
-        btn.setAttribute("aria-pressed", String(!cur));
-      });
-    }
-  });
-
-  /* ------------------ Contact form handling ------------------ */
-  const form = document.getElementById("contactForm");
+  // Contact form
+  const form = document.getElementById("contact-form");
+  const msg = document.getElementById("form-message");
   if (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      const fd = new FormData(this);
-      const name = (fd.get("name") || "").trim();
-      const email = (fd.get("email") || "").trim();
-      const message = (fd.get("message") || "").trim();
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
       if (!name || !email || !message) {
-        // small inline accessible alert (fallback to alert)
-        if (typeof window.ariaAlert === "function")
-          window.ariaAlert("Please fill all fields.");
-        else alert("Please fill all fields.");
+        msg.textContent = "Please fill in all fields.";
+        msg.style.color = "#ef4444";
         return;
       }
-
-      // Create mailto fallback and success UI
-      const subject = encodeURIComponent(`Portfolio contact from ${name}`);
-      const body = encodeURIComponent(message + "\n\n— " + name + "\n" + email);
-      // Attempt to open mail client
-      window.location.href = `mailto:karan@example.com?subject=${subject}&body=${body}`;
-
-      // Reset form
-      this.reset();
-
-      // visual confirmation (small ephemeral)
-      const btn = this.querySelector('button[type="submit"]');
-      if (btn) {
-        const old = btn.textContent;
-        btn.textContent = "Sent ✓";
-        btn.disabled = true;
-        setTimeout(() => {
-          btn.textContent = old;
-          btn.disabled = false;
-        }, 2200);
-      }
+      // Simulate sending (replace with real backend/email service)
+      msg.textContent = "Message sent! Thank you.";
+      msg.style.color = "#2563eb";
+      form.reset();
+      setTimeout(() => {
+        msg.textContent = "";
+      }, 3000);
     });
   }
 
-  /* ------------------ Download CV placeholder ------------------ */
-  const downloadCv = $("#downloadCv");
-  if (downloadCv) {
-    downloadCv.addEventListener("click", (e) => {
-      e.preventDefault();
-      // Small placeholder PDF-ish blob (replace with your real CV file or server URL)
-      const content = `
-        Karan Gandhi - CV
-        -----------------
-        Replace this with your real CV PDF file.
-      `;
-      const blob = new Blob([content], { type: "text/plain" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "Karan-Gandhi-CV.txt"; // change to .pdf when real file available
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 1500);
-    });
-  }
+  // Three.js animated particles background in projects section
+  if (window.THREE && document.getElementById("three-projects-bg")) {
+    const canvas = document.getElementById("three-projects-bg");
+    const container = canvas.parentElement;
+    const width = container.offsetWidth;
+    const height = 220;
+    canvas.width = width;
+    canvas.height = height;
+    canvas.style.width = "100%";
+    canvas.style.height = height + "px";
+    canvas.style.pointerEvents = "none";
 
-  /* ------------------ small UX: keyboard shortcut to toggle theme (T) ------------------ */
-  window.addEventListener("keydown", (e) => {
-    if (
-      e.key.toLowerCase() === "t" &&
-      (e.ctrlKey || e.metaKey) === false &&
-      e.altKey === false
-    ) {
-      // quick toggle between dark & light (not auto)
-      const cur = localStorage.getItem("site-theme") || "auto";
-      const next = cur === "dark" ? "light" : "dark";
-      localStorage.setItem("site-theme", next);
-      applyTheme(next);
-      if (themeToggle)
-        themeToggle.animate(
-          [{ transform: "scale(0.98)" }, { transform: "none" }],
-          { duration: 200, easing: "ease" }
-        );
+    const renderer = new THREE.WebGLRenderer({
+      canvas,
+      alpha: true,
+      antialias: true,
+    });
+    renderer.setClearColor(0x000000, 0);
+    renderer.setSize(width, height, false);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, width / height, 1, 1000);
+    camera.position.z = 200;
+
+    // Particles
+    const particles = 120;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particles * 3);
+    for (let i = 0; i < particles; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * width * 0.8;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * height * 0.7;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 80;
     }
-  });
-})();
+    geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    const material = new THREE.PointsMaterial({
+      color: 0x2563eb,
+      size: 3,
+      opacity: 0.7,
+      transparent: true,
+    });
+    const points = new THREE.Points(geometry, material);
+    scene.add(points);
+
+    // Animate
+    function animate() {
+      points.rotation.y += 0.002;
+      points.rotation.x += 0.001;
+      renderer.render(scene, camera);
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Responsive resize
+    window.addEventListener("resize", () => {
+      const newWidth = container.offsetWidth;
+      canvas.width = newWidth;
+      renderer.setSize(newWidth, height, false);
+      camera.aspect = newWidth / height;
+      camera.updateProjectionMatrix();
+    });
+  }
+});

@@ -2,217 +2,158 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Karan Gandhi — Portfolio</title>
     <meta
       name="description"
       content="Portfolio of Karan Gandhi — Software developer. Projects, skills and contact."
     />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <!-- `data-theme` is toggled by JS (light | dark) -->
-    <div class="container" id="page" data-theme="auto">
-      <header>
-        <div class="brand">
-          <div class="logo">KG</div>
-          <div>
-            <div class="name">Karan Gandhi</div>
-            <div class="sub">Full-stack developer — Pune, India</div>
-          </div>
-        </div>
 
-        <nav aria-label="Main">
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Three.js (required for cube & particles) -->
+    <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
+  </head>
+
+  <body>
+    <!-- ================= HEADER ================= -->
+    <header class="header">
+      <div class="container nav-container">
+        <div class="logo">KG</div>
+
+        <nav class="nav">
           <a class="nav-link" href="#projects">Projects</a>
           <a class="nav-link" href="#skills">Skills</a>
           <a class="nav-link" href="#about">About</a>
-          <a class="btn btn-cta" href="#contact">Contact</a>
+          <a class="btn btn-primary" href="#contact">Contact</a>
         </nav>
 
         <!-- Theme toggle -->
-        <div class="controls">
-          <button
-            id="themeToggle"
-            class="btn btn-ghost"
-            aria-pressed="false"
-            title="Toggle color theme"
-          >
-            <span class="theme-icon" aria-hidden="true">🌓</span>
-            <span class="sr-only">Toggle theme</span>
-          </button>
+        <button id="theme-toggle" class="btn btn-secondary">🌙</button>
+      </div>
+    </header>
+
+    <!-- ================= HERO ================= -->
+    <section class="hero-section">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <h1>
+            Hi, I'm
+            <span class="accent" id="typed-name"></span
+            ><span id="typed-cursor">|</span>
+          </h1>
+
+          <p class="subtitle">
+            Designer-minded full-stack developer from Pune, India
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">See Work</a>
+            <a href="#contact" class="btn btn-secondary">Hire Me</a>
+          </div>
         </div>
-      </header>
 
-      <main>
-        <section class="hero">
-          <div class="hero-left">
-            <span class="kicker">Open for roles • Available now</span>
-            <h1 class="fade-up">
-              Hey, I'm <span class="accent">Karan Gandhi</span><br /><small
-                class="tag"
-                >Designer-minded full-stack developer</small
-              >
-            </h1>
-            <p class="lead fade-up">
-              I build clean, fast web apps — from APIs and tooling to polished
-              frontend experiences. I enjoy performance, readable code, and
-              product thinking.
-            </p>
-
-            <div class="actions fade-up">
-              <a class="btn btn-cta" href="#projects">See work</a>
-              <a class="btn btn-ghost" href="#contact">Hire / Contact</a>
-            </div>
-
-            <div class="card status">
-              <div class="status-left">
-                <div class="badge">KG</div>
-                <div>
-                  <div class="bold">Available for projects</div>
-                  <div class="muted">
-                    Open to internships, freelance and full-time roles.
-                  </div>
-                </div>
-              </div>
-              <div class="muted contact">Contact: karan@example.com</div>
-            </div>
-
-            <h3 class="projects-title">Selected projects</h3>
-            <div class="projects" id="projects">
-              <article class="project">
-                <div class="thumb" aria-hidden="true"></div>
-                <div class="meta">
-                  <h4>Realtime Chat • Node + Socket.io</h4>
-                  <p class="muted">
-                    Scalable chat with rooms, unread counts and message
-                    persistence.
-                  </p>
-                </div>
-              </article>
-
-              <article class="project">
-                <div class="thumb" aria-hidden="true"></div>
-                <div class="meta">
-                  <h4>Portfolio CMS • Next.js + Express</h4>
-                  <p class="muted">
-                    Headless CMS and simple admin to update projects and pages.
-                  </p>
-                </div>
-              </article>
-
-              <article class="project">
-                <div class="thumb" aria-hidden="true"></div>
-                <div class="meta">
-                  <h4>Task Optimizer • CLI in Go</h4>
-                  <p class="muted">
-                    Terminal tool to score and reorder developer tasks by
-                    priority.
-                  </p>
-                </div>
-              </article>
-            </div>
-          </div>
-
-          <aside class="profile">
-            <div class="card avatar">
-              <!-- Replace with your photo (square recommended) -->
-              <img
-                src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600'><rect width='100%' height='100%' fill='%23071425'/><text x='50%' y='50%' fill='%237ef0c7' font-size='80' font-family='Poppins,Inter' dominant-baseline='middle' text-anchor='middle'>KG</text></svg>"
-                alt="Karan Gandhi"
-              />
-            </div>
-
-            <div class="card contact-card">
-              <div class="bold">Contact</div>
-              <div class="muted">
-                karan@example.com<br /><a href="#" class="link">GitHub</a> •
-                <a href="#" class="link">LinkedIn</a>
-              </div>
-            </div>
-
-            <div class="card facts">
-              <div class="bold">Quick facts</div>
-              <div class="muted">
-                Location: Pune, India<br />Availability: Immediate<br />Interests:
-                Backend systems, tooling, product design
-              </div>
-            </div>
-          </aside>
-        </section>
-
-        <section id="skills">
-          <h2>Skills</h2>
-          <div class="skills">
-            <div class="skill">JavaScript</div>
-            <div class="skill">TypeScript</div>
-            <div class="skill">Node.js</div>
-            <div class="skill">React / Next.js</div>
-            <div class="skill">Postgres</div>
-            <div class="skill">Docker</div>
-            <div class="skill">Go</div>
-            <div class="skill">Testing</div>
-          </div>
-        </section>
-
-        <section id="about">
-          <div class="about-left">
-            <h2>About</h2>
-            <p class="muted">
-              I studied at Spicer Higher Secondary School (till 10th) and SNBP
-              International School (till 12th) in Pune. I build end-to-end
-              applications — APIs, databases and polished frontends. I care
-              about performance, clarity and delightful UX.
-            </p>
-            <p class="muted">
-              If you'd like to work together, ping me — I usually respond within
-              a day.
-            </p>
-          </div>
-
-          <div class="about-right">
-            <div class="card">
-              <form id="contactForm">
-                <input name="name" placeholder="Your name" required />
-                <input name="email" type="email" placeholder="Email" required />
-                <textarea
-                  name="message"
-                  rows="5"
-                  placeholder="Tell me about the project"
-                  required
-                ></textarea>
-                <div class="form-actions">
-                  <button class="btn btn-cta" type="submit">
-                    Send message
-                  </button>
-                  <a id="downloadCv" class="btn btn-ghost" href="#"
-                    >Download CV</a
-                  >
-                </div>
-              </form>
-            </div>
-
-            <div style="height: 12px"></div>
-
-            <div class="card more">
-              <div class="bold">More</div>
-              <div class="muted">
-                Open-source contributions • Blog • Speaking
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer>
-        <div>© Karan Gandhi</div>
-        <div class="footer-links">
-          <a href="#">Privacy</a><a href="#">Resume</a>
+        <div class="hero-img">
+          <!-- Three.js cube -->
+          <canvas id="three-hero-cube"></canvas>
         </div>
-      </footer>
+      </div>
+    </section>
 
-      <!-- polite live region for theme changes -->
-      <div id="themeStatus" class="sr-only" aria-live="polite"></div>
-    </div>
+    <!-- ================= PROJECTS ================= -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2>Projects</h2>
+
+        <!-- Three.js particles background -->
+        <canvas id="three-projects-bg"></canvas>
+
+        <div class="projects-grid">
+          <div class="project-card">
+            <h3>Realtime Chat App</h3>
+            <p>
+              Node.js + Socket.io based chat app with rooms and persistence.
+            </p>
+          </div>
+
+          <div class="project-card">
+            <h3>Portfolio CMS</h3>
+            <p>Next.js + Express CMS to manage portfolio content.</p>
+          </div>
+
+          <div class="project-card">
+            <h3>Task Optimizer CLI</h3>
+            <p>Go-based CLI tool to prioritize developer tasks.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SKILLS ================= -->
+    <section id="skills" class="section">
+      <div class="container">
+        <h2>Skills</h2>
+
+        <div class="skills-list">
+          <span class="skill">JavaScript</span>
+          <span class="skill">TypeScript</span>
+          <span class="skill">Node.js</span>
+          <span class="skill">React / Next.js</span>
+          <span class="skill">PostgreSQL</span>
+          <span class="skill">Docker</span>
+          <span class="skill">Go</span>
+          <span class="skill">Rust</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section id="about" class="section">
+      <div class="container about-container">
+        <h2>About Me</h2>
+
+        <div class="about-text">
+          <p>
+            I studied at Spicer Higher Secondary School (10th) and SNBP
+            International School (12th), Pune. I enjoy building performant
+            backend systems and clean UI experiences.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2>Contact</h2>
+
+        <div class="contact-container">
+          <form id="contact-form" class="contact-form">
+            <input name="name" type="text" placeholder="Your Name" required />
+            <input
+              name="email"
+              type="email"
+              placeholder="Your Email"
+              required
+            />
+            <textarea
+              name="message"
+              rows="5"
+              placeholder="Your Message"
+              required
+            ></textarea>
+
+            <button type="submit" class="btn btn-primary">Send Message</button>
+          </form>
+
+          <div id="form-message" class="form-message"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">© Karan Gandhi • All rights reserved</footer>
 
     <script src="script.js"></script>
   </body>

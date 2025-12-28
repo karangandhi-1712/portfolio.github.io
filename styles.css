@@ -1,3 +1,6 @@
+body.dark .social-icon {
+  stroke: #fff !important;
+}
 /* Professional Portfolio Styles */
 * {
   box-sizing: border-box;

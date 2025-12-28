@@ -12,12 +12,10 @@
 
     <link rel="stylesheet" href="styles.css" />
 
-    <!-- Three.js (required for cube & particles) -->
     <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
   </head>
 
   <body>
-    <!-- ================= HEADER ================= -->
     <header class="header">
       <div class="container nav-container">
         <div class="logo">KG</div>
@@ -29,12 +27,10 @@
           <a class="btn btn-primary" href="#contact">Contact</a>
         </nav>
 
-        <!-- Theme toggle -->
         <button id="theme-toggle" class="btn btn-secondary">🌙</button>
       </div>
     </header>
 
-    <!-- ================= HERO ================= -->
     <section class="hero-section">
       <div class="container hero-content">
         <div class="hero-text">
@@ -55,18 +51,15 @@
         </div>
 
         <div class="hero-img">
-          <!-- Three.js cube -->
           <canvas id="three-hero-cube"></canvas>
         </div>
       </div>
     </section>
 
-    <!-- ================= PROJECTS ================= -->
     <section id="projects" class="section">
       <div class="container">
         <h2>Projects</h2>
 
-        <!-- Three.js particles background -->
         <canvas id="three-projects-bg"></canvas>
 
         <div class="projects-grid">
@@ -91,7 +84,6 @@
       </div>
     </section>
 
-    <!-- ================= SKILLS ================= -->
     <section id="skills" class="section">
       <div class="container">
         <h2>Skills</h2>
@@ -109,7 +101,6 @@
       </div>
     </section>
 
-    <!-- ================= ABOUT ================= -->
     <section id="about" class="section">
       <div class="container about-container">
         <h2>About Me</h2>
@@ -124,7 +115,6 @@
       </div>
     </section>
 
-    <!-- ================= CONTACT ================= -->
     <section id="contact" class="section">
       <div class="container">
         <h2>Contact</h2>
@@ -148,8 +138,11 @@
               placeholder="Your Message"
               required
             ></textarea>
-            <button type="submit" class="btn btn-primary">Send Message</button>
+            <button type="submit" class="btn btn-primary" id="submit-btn">
+              Send Message
+            </button>
           </form>
+
           <div
             id="formspree-success"
             style="
@@ -163,32 +156,76 @@
           >
             🎉 Thank you! Your message was sent.
           </div>
+
+          <div
+            id="formspree-error"
+            style="
+              display: none;
+              margin-top: 1rem;
+              color: red;
+              text-align: center;
+            "
+          >
+            Oops! There was a problem.
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= FOOTER ================= -->
     <footer class="footer">© Karan Gandhi • All rights reserved</footer>
 
     <script src="script.js"></script>
+
     <script>
-      // Show a cute intimation after Formspree submission
-      document.addEventListener("DOMContentLoaded", function () {
-        var form = document.getElementById("formspree-form");
-        var successMsg = document.getElementById("formspree-success");
-        if (form && successMsg) {
-          form.addEventListener("submit", function (e) {
-            // Let the form submit, then show the message after a short delay
-            setTimeout(function () {
+      var form = document.getElementById("formspree-form");
+
+      async function handleSubmit(event) {
+        event.preventDefault(); // 1. Stops the page redirect
+
+        var status = document.getElementById("formspree-success");
+        var errorStatus = document.getElementById("formspree-error");
+        var data = new FormData(event.target);
+
+        // Hide messages if they were already shown
+        status.style.display = "none";
+        errorStatus.style.display = "none";
+
+        fetch(event.target.action, {
+          method: form.method,
+          body: data,
+          headers: {
+            Accept: "application/json",
+          },
+        })
+          .then((response) => {
+            if (response.ok) {
+              // 2. Success: Show the success message and clear form
+              status.style.display = "block";
               form.reset();
-              successMsg.style.display = "block";
-              setTimeout(function () {
-                successMsg.style.display = "none";
-              }, 3500);
-            }, 300);
+            } else {
+              // 3. Error: Formspree rejected it (e.g. spam or bad email)
+              response.json().then((data) => {
+                if (Object.hasOwn(data, "errors")) {
+                  errorStatus.innerHTML = data["errors"]
+                    .map((error) => error["message"])
+                    .join(", ");
+                } else {
+                  errorStatus.innerHTML =
+                    "Oops! There was a problem submitting your form";
+                }
+                errorStatus.style.display = "block";
+              });
+            }
+          })
+          .catch((error) => {
+            // 4. Network Error
+            errorStatus.innerHTML =
+              "Oops! There was a problem submitting your form";
+            errorStatus.style.display = "block";
           });
-        }
-      });
+      }
+
+      form.addEventListener("submit", handleSubmit);
     </script>
   </body>
 </html>

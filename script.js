@@ -1,4 +1,4 @@
-// Typing animation for name/title in hero
+// ================= HERO TYPING ANIMATION =================
 const typedName = document.getElementById("typed-name");
 const cursor = document.getElementById("typed-cursor");
 if (typedName && cursor) {
@@ -11,6 +11,7 @@ if (typedName && cursor) {
   let textIdx = 0;
   let i = 0;
   let typing = true;
+
   function typeLoop() {
     const current = texts[textIdx];
     if (typing) {
@@ -35,6 +36,7 @@ if (typedName && cursor) {
     }
   }
   typeLoop();
+
   // Blinking cursor
   setInterval(() => {
     cursor.style.visibility =
@@ -42,7 +44,7 @@ if (typedName && cursor) {
   }, 500);
 }
 
-// Three.js floating cube in hero
+// ================= HERO CUBE (THREE.JS) =================
 if (window.THREE && document.getElementById("three-hero-cube")) {
   const canvas = document.getElementById("three-hero-cube");
   const width = 120;
@@ -59,6 +61,7 @@ if (window.THREE && document.getElementById("three-hero-cube")) {
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(60, width / height, 1, 1000);
   camera.position.z = 180;
+
   // Cube
   const geometry = new THREE.BoxGeometry(48, 48, 48);
   const material = new THREE.MeshStandardMaterial({
@@ -68,10 +71,12 @@ if (window.THREE && document.getElementById("three-hero-cube")) {
   });
   const cube = new THREE.Mesh(geometry, material);
   scene.add(cube);
+
   // Light
   const light = new THREE.PointLight(0xffffff, 1, 500);
   light.position.set(60, 80, 120);
   scene.add(light);
+
   // Animate
   function animateCube() {
     cube.rotation.x += 0.012;
@@ -81,9 +86,10 @@ if (window.THREE && document.getElementById("three-hero-cube")) {
   }
   animateCube();
 }
-// Professional Portfolio JS
+
+// ================= MAIN UI LOGIC =================
 document.addEventListener("DOMContentLoaded", function () {
-  // Theme toggle
+  // --- Theme Toggle ---
   const themeBtn = document.getElementById("theme-toggle");
   function setTheme(dark) {
     if (dark) {
@@ -95,15 +101,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     localStorage.setItem("theme", dark ? "dark" : "light");
   }
-  // Load theme from storage or system
+
   const userTheme = localStorage.getItem("theme");
   const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   setTheme(userTheme === "dark" || (!userTheme && systemDark));
+
   themeBtn.addEventListener("click", function () {
     setTheme(!document.body.classList.contains("dark"));
   });
 
-  // Smooth scroll for nav links and buttons
+  // --- Smooth Scroll ---
   document.querySelectorAll("a.nav-link, .btn").forEach((link) => {
     link.addEventListener("click", function (e) {
       const href = link.getAttribute("href");
@@ -117,31 +124,61 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Contact form
-  const form = document.getElementById("contact-form");
-  const msg = document.getElementById("form-message");
+  // --- REAL CONTACT FORM (FORMSPREE AJAX) ---
+  // Matches the ID in the HTML I provided earlier: id="formspree-form"
+  const form = document.getElementById("formspree-form");
+  const successMsg = document.getElementById("formspree-success");
+  const errorMsg = document.getElementById("formspree-error");
+
   if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const name = form.name.value.trim();
-      const email = form.email.value.trim();
-      const message = form.message.value.trim();
-      if (!name || !email || !message) {
-        msg.textContent = "Please fill in all fields.";
-        msg.style.color = "#ef4444";
-        return;
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault(); // STOP page redirect
+
+      const data = new FormData(event.target);
+
+      // Reset messages
+      if (successMsg) successMsg.style.display = "none";
+      if (errorMsg) errorMsg.style.display = "none";
+
+      try {
+        const response = await fetch(event.target.action, {
+          method: form.method,
+          body: data,
+          headers: {
+            Accept: "application/json",
+          },
+        });
+
+        if (response.ok) {
+          form.reset();
+          if (successMsg) successMsg.style.display = "block";
+        } else {
+          const data = await response.json();
+          if (Object.hasOwn(data, "errors")) {
+            if (errorMsg) {
+              errorMsg.textContent = data["errors"]
+                .map((error) => error["message"])
+                .join(", ");
+              errorMsg.style.display = "block";
+            }
+          } else {
+            if (errorMsg) {
+              errorMsg.textContent =
+                "Oops! There was a problem submitting your form";
+              errorMsg.style.display = "block";
+            }
+          }
+        }
+      } catch (error) {
+        if (errorMsg) {
+          errorMsg.textContent = "Oops! Network error. Please try again.";
+          errorMsg.style.display = "block";
+        }
       }
-      // Simulate sending (replace with real backend/email service)
-      msg.textContent = "Message sent! Thank you.";
-      msg.style.color = "#2563eb";
-      form.reset();
-      setTimeout(() => {
-        msg.textContent = "";
-      }, 3000);
     });
   }
 
-  // Three.js animated particles background in projects section
+  // --- THREE.JS PARTICLES BACKGROUND ---
   if (window.THREE && document.getElementById("three-projects-bg")) {
     const canvas = document.getElementById("three-projects-bg");
     const container = canvas.parentElement;

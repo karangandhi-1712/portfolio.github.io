@@ -130,25 +130,39 @@
         <h2>Contact</h2>
 
         <div class="contact-container">
-          <form id="contact-form" class="contact-form">
-            <input name="name" type="text" placeholder="Your Name" required />
+          <form
+            action="https://formspree.io/f/mwvkbyqy"
+            method="POST"
+            class="contact-form"
+            id="formspree-form"
+          >
+            <input type="text" name="name" placeholder="Your Name" required />
             <input
-              name="email"
               type="email"
+              name="email"
               placeholder="Your Email"
               required
             />
             <textarea
               name="message"
-              rows="5"
               placeholder="Your Message"
               required
             ></textarea>
-
             <button type="submit" class="btn btn-primary">Send Message</button>
           </form>
-
-          <div id="form-message" class="form-message"></div>
+          <div
+            id="formspree-success"
+            style="
+              display: none;
+              margin-top: 1rem;
+              color: #2563eb;
+              font-weight: 600;
+              font-size: 1.1rem;
+              text-align: center;
+            "
+          >
+            🎉 Thank you! Your message was sent.
+          </div>
         </div>
       </div>
     </section>
@@ -157,5 +171,24 @@
     <footer class="footer">© Karan Gandhi • All rights reserved</footer>
 
     <script src="script.js"></script>
+    <script>
+      // Show a cute intimation after Formspree submission
+      document.addEventListener("DOMContentLoaded", function () {
+        var form = document.getElementById("formspree-form");
+        var successMsg = document.getElementById("formspree-success");
+        if (form && successMsg) {
+          form.addEventListener("submit", function (e) {
+            // Let the form submit, then show the message after a short delay
+            setTimeout(function () {
+              form.reset();
+              successMsg.style.display = "block";
+              setTimeout(function () {
+                successMsg.style.display = "none";
+              }, 3500);
+            }, 300);
+          });
+        }
+      });
+    </script>
   </body>
 </html>

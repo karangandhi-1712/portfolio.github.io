@@ -2,7 +2,12 @@
 const typedName = document.getElementById("typed-name");
 const cursor = document.getElementById("typed-cursor");
 if (typedName && cursor) {
-  const texts = ["Karan Gandhi", "Rustacean"];
+  const texts = [
+    "Karan Gandhi",
+    "Rustacean",
+    "Web Developer",
+    "Open Source Enthusiast",
+  ];
   let textIdx = 0;
   let i = 0;
   let typing = true;

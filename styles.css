@@ -86,6 +86,9 @@ body {
 .hero-section {
   background: linear-gradient(120deg, #5b636c 0%, #f4f6fa 100%);
   padding: 4rem 0 2rem 0;
+  min-height: 420px; /* Adjust as needed for your design */
+  display: flex;
+  align-items: center;
 }
 .hero-content {
   display: flex;
@@ -100,9 +103,15 @@ body {
 .hero-text h1 {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
+  min-height: 3.5em; /* Reserve space for animated text */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 .accent {
   color: #2563eb;
+  display: inline-block;
+  min-width: 220px; /* Set to the width of the longest animated word */
 }
 .subtitle {
   color: #475569;

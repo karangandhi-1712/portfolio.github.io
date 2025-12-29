@@ -3,10 +3,11 @@ const typedName = document.getElementById("typed-name");
 const cursor = document.getElementById("typed-cursor");
 if (typedName && cursor) {
   const texts = [
-    "Karan Gandhi",
-    "Rustacean",
-    "Web Developer",
-    "Open Source Enthusiast",
+    "a Rustacean",
+    "a Web Developer",
+    "an Open Source Enthusiast",
+    "a Tech-Savvy Individual",
+    "Learning New Things"
   ];
   let textIdx = 0;
   let i = 0;
@@ -94,10 +95,36 @@ document.addEventListener("DOMContentLoaded", function () {
   function setTheme(dark) {
     if (dark) {
       document.body.classList.add("dark");
-      themeBtn.textContent = "☀️";
+      themeBtn.innerHTML = `<span style="display:inline-block; animation: spin-sun 1s linear;">☀️</span>`;
+      // Add animation CSS if not already present
+      if (!document.getElementById("spin-sun-style")) {
+        const style = document.createElement("style");
+        style.id = "spin-sun-style";
+        style.textContent = `
+          @keyframes spin-sun {
+        0% { transform: rotate(0deg) scale(1); }
+        60% { transform: rotate(360deg) scale(1.2);}
+        100% { transform: rotate(360deg) scale(1);}
+          }
+        `;
+        document.head.appendChild(style);
+      }
     } else {
       document.body.classList.remove("dark");
-      themeBtn.textContent = "🌙";
+      themeBtn.innerHTML = `<span style="display:inline-block; animation: spin-moon 1s linear;">🌙</span>`;
+      // Add animation CSS if not already present
+      if (!document.getElementById("spin-moon-style")) {
+        const style = document.createElement("style");
+        style.id = "spin-moon-style";
+        style.textContent = `
+          @keyframes spin-moon {
+        0% { transform: rotate(0deg) scale(1); }
+        60% { transform: rotate(-360deg) scale(1.2);}
+        100% { transform: rotate(-360deg) scale(1);}
+          }
+        `;
+        document.head.appendChild(style);
+      }
     }
     localStorage.setItem("theme", dark ? "dark" : "light");
   }

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <!-- JSON-LD Structured Data for Person -->
@@ -10,7 +10,7 @@
         "url": "https://karangandhi.in/",
         "sameAs": [
           "https://github.com/karangandhi-1712",
-          "https://instagram.com/karangandhi_1712",
+          "https://www.linkedin.com/in/karangandhi1712",
           "mailto:karan.gandhi@gmail.com"
         ],
         "jobTitle": "Software Developer",
@@ -49,11 +49,9 @@
     <meta name="twitter:image" content="https://karangandhi.in/preview.png" />
 
     <link rel="stylesheet" href="styles.css" />
-
-    <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
   </head>
 
-  <body>
+  <body class="dark">
     <header class="header">
       <div class="container nav-container">
         <div class="logo">KG</div>
@@ -64,8 +62,6 @@
           <a class="nav-link" href="#about">About</a>
           <a class="btn btn-primary" href="#contact">Contact</a>
         </nav>
-
-        <button id="theme-toggle" class="btn btn-secondary">🌙</button>
       </div>
     </header>
 
@@ -90,7 +86,11 @@
         </div>
 
         <div class="hero-img">
-          <canvas id="three-hero-cube"></canvas>
+          <img
+            src="assets/profile.png"
+            alt="Karan Gandhi"
+            class="profile-photo"
+          />
         </div>
       </div>
     </section>
@@ -98,8 +98,6 @@
     <section id="projects" class="section">
       <div class="container">
         <h2>Projects</h2>
-
-        <canvas id="three-projects-bg"></canvas>
 
         <div class="projects-grid">
           <div class="project-card">
@@ -252,10 +250,10 @@
           <span style="display: none">GitHub</span>
         </a>
         <a
-          href="https://instagram.com/karangandhi_1712"
+          href="https://www.linkedin.com/in/karangandhi1712"
           target="_blank"
           rel="noopener"
-          aria-label="Instagram"
+          aria-label="LinkedIn"
           style="display: inline-flex; align-items: center; gap: 0.3em"
         >
           <svg
@@ -270,11 +268,13 @@
             stroke-linejoin="round"
             style="vertical-align: middle"
           >
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z" />
-            <line x1="17.5" y1="6.5" x2="17.5" y2="6.5" />
+            <path
+              d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+            ></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
           </svg>
-          <span style="display: none">Instagram</span>
+          <span style="display: none">LinkedIn</span>
         </a>
         <a
           href="mailto:karananandgandhi@gmail.com"

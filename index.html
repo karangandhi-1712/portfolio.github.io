@@ -1,358 +1,1077 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
-    <!-- JSON-LD Structured Data for Person -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Karan Gandhi",
-        "url": "https://karangandhi.in/",
-        "sameAs": [
-          "https://github.com/karangandhi-1712",
-          "https://www.linkedin.com/in/karangandhi1712",
-          "mailto:karan.gandhi@gmail.com"
-        ],
-        "jobTitle": "Software Developer",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Pune",
-          "addressCountry": "IN"
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karan Gandhi | Rustacean & Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Cinzel+Decorative:wght@400;700;900&display=swap");
+
+      body {
+        font-family: "Fira Code", monospace;
+        background-color: #020617;
+        color: #cbd5e1;
+        overflow-x: hidden;
+      }
+
+      .font-serif-magic {
+        font-family: "Cinzel Decorative", serif;
+        letter-spacing: 0.05em;
+      }
+
+      .text-glow {
+        text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+      }
+
+      .cursor-blink {
+        animation: blink 1s step-end infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
         }
       }
-    </script>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Karan Gandhi — Portfolio</title>
-    <meta
-      name="description"
-      content="Portfolio of Karan Gandhi — Software developer. Projects, skills, and contact information."
-    />
-    <meta name="robots" content="index, follow" />
-    <meta name="googlebot" content="index, follow" />
-    <meta name="author" content="Karan Gandhi" />
-    <meta property="og:title" content="Karan Gandhi — Portfolio" />
-    <meta
-      property="og:description"
-      content="Portfolio of Karan Gandhi — Software developer. Projects, skills, and contact information."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://karangandhi.in/" />
-    <meta property="og:image" content="https://karangandhi.in/preview.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Karan Gandhi — Portfolio" />
-    <meta
-      name="twitter:description"
-      content="Portfolio of Karan Gandhi — Software developer. Projects, skills, and contact information."
-    />
-    <meta name="twitter:image" content="https://karangandhi.in/preview.png" />
-
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-
-  <body class="dark">
-    <header class="header">
-      <div class="container nav-container">
-        <div class="logo">KG</div>
-
-        <nav class="nav">
-          <a class="nav-link" href="#projects">Projects</a>
-          <a class="nav-link" href="#skills">Skills</a>
-          <a class="nav-link" href="#about">About</a>
-          <a class="btn btn-primary" href="#contact">Contact</a>
-        </nav>
-      </div>
-    </header>
-
-    <section class="hero-section">
-      <div class="container hero-content">
-        <div class="hero-text">
-          <h1>
-            Hi, I'm Karan Gandhi
-            <br />
-            <span class="accent" id="typed-name"></span>
-            <span id="typed-cursor"></span>
-          </h1>
-
-          <p class="subtitle">
-            Designer-minded full-stack developer from Pune, India
-          </p>
-
-          <div class="hero-actions">
-            <a href="#projects" class="btn btn-primary">See Work</a>
-            <a href="#contact" class="btn btn-secondary">Hire Me</a>
-          </div>
-        </div>
-
-        <div class="hero-img">
-          <img
-            src="assets/profile.png"
-            alt="Karan Gandhi"
-            class="profile-photo"
-          />
-        </div>
-      </div>
-    </section>
-
-    <section id="projects" class="section">
-      <div class="container">
-        <h2>Projects</h2>
-
-        <div class="projects-grid">
-          <div class="project-card">
-            <h3>Arch configuration</h3>
-            <p>
-              Arch Linux with Hyprland config files to set up a comfortable
-              desktop environment.
-            </p>
-          </div>
-
-          <div class="project-card">
-            <h3>Portfolio Website</h3>
-            <p>To brief others about myself</p>
-          </div>
-
-          <div class="project-card">
-            <h3>Task Optimizer CLI</h3>
-            <p>Rust-based CLI tool to prioritize developer tasks.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills" class="section">
-      <div class="container">
-        <h2>Skills</h2>
-
-        <div class="skills-list">
-          <span class="skill">JavaScript</span>
-          <span class="skill">C/C++</span>
-          <span class="skill">Node.js</span>
-          <span class="skill">React.js</span>
-          <span class="skill">PostgreSQL</span>
-          <span class="skill">Python</span>
-          <span class="skill">Go</span>
-          <span class="skill">Rust</span>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="section">
-      <div class="container about-container">
-        <h2>About Me</h2>
-
-        <div class="about-text">
-          <p>
-            I studied at Spicer Higher Secondary School (10th) and SNBP
-            International School (12th), Pune. I enjoy building performant
-            backend systems and clean UI experiences. I love learning new
-            technologies and improving my skills. Currently, I'm exploring Rust
-            and Go for backend development. Getting to AI and ML, I find it
-            fascinating how machines can learn and make decisions. I am
-            exploring this field to understand its potential and applications.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section">
-      <div class="container">
-        <h2>Contact</h2>
-
-        <div class="contact-container">
-          <form
-            action="https://formspree.io/f/mwvkbyqy"
-            method="POST"
-            class="contact-form"
-            id="formspree-form"
-          >
-            <input type="text" name="name" placeholder="Your Name" required />
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              required
-            />
-            <textarea
-              name="message"
-              placeholder="Your Message"
-              required
-            ></textarea>
-            <button type="submit" class="btn btn-primary" id="submit-btn">
-              Send Message
-            </button>
-          </form>
-
-          <div
-            id="formspree-success"
-            style="
-              display: none;
-              margin-top: 1rem;
-              color: #2563eb;
-              font-weight: 600;
-              font-size: 1.1rem;
-              text-align: center;
-            "
-          >
-            🎉 Thank you! Your message was sent.
-          </div>
-
-          <div
-            id="formspree-error"
-            style="
-              display: none;
-              margin-top: 1rem;
-              color: red;
-              text-align: center;
-            "
-          >
-            Oops! There was a problem.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      © Karan Gandhi • All rights reserved
-      <div
-        class="social-links"
-        style="
-          margin-top: 0.5em;
-          display: flex;
-          justify-content: center;
-          gap: 1em;
-        "
-      >
-        <a
-          href="https://github.com/karangandhi-1712"
-          target="_blank"
-          rel="noopener"
-          aria-label="GitHub"
-          style="display: inline-flex; align-items: center; gap: 0.3em"
-        >
-          <svg
-            class="social-icon"
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#18181b"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            style="vertical-align: middle"
-          >
-            <path
-              d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.18-1.1-1.5-1.1-1.5-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.8 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"
-            />
-          </svg>
-          <span style="display: none">GitHub</span>
-        </a>
-        <a
-          href="https://www.linkedin.com/in/karangandhi1712"
-          target="_blank"
-          rel="noopener"
-          aria-label="LinkedIn"
-          style="display: inline-flex; align-items: center; gap: 0.3em"
-        >
-          <svg
-            class="social-icon"
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#18181b"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            style="vertical-align: middle"
-          >
-            <path
-              d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
-            ></path>
-            <rect x="2" y="9" width="4" height="12"></rect>
-            <circle cx="4" cy="4" r="2"></circle>
-          </svg>
-          <span style="display: none">LinkedIn</span>
-        </a>
-        <a
-          href="mailto:karananandgandhi@gmail.com"
-          aria-label="Gmail"
-          style="display: inline-flex; align-items: center; gap: 0.3em"
-        >
-          <svg
-            class="social-icon"
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#18181b"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            style="vertical-align: middle"
-          >
-            <rect x="2" y="4" width="20" height="16" rx="2" />
-            <polyline points="22,6 12,13 2,6" />
-          </svg>
-          <span style="display: none">Gmail</span>
-        </a>
-      </div>
-    </footer>
-
-    <script src="script.js"></script>
-
-    <script>
-      var form = document.getElementById("formspree-form");
-
-      async function handleSubmit(event) {
-        event.preventDefault(); // 1. Stops the page redirect
-
-        var status = document.getElementById("formspree-success");
-        var errorStatus = document.getElementById("formspree-error");
-        var data = new FormData(event.target);
-
-        // Hide messages if they were already shown
-        status.style.display = "none";
-        errorStatus.style.display = "none";
-
-        fetch(event.target.action, {
-          method: form.method,
-          body: data,
-          headers: {
-            Accept: "application/json",
-          },
-        })
-          .then((response) => {
-            if (response.ok) {
-              // 2. Success: Show the success message and clear form
-              status.style.display = "block";
-              form.reset();
-            } else {
-              // 3. Error: Formspree rejected it (e.g. spam or bad email)
-              response.json().then((data) => {
-                if (Object.hasOwn(data, "errors")) {
-                  errorStatus.innerHTML = data["errors"]
-                    .map((error) => error["message"])
-                    .join(", ");
-                } else {
-                  errorStatus.innerHTML =
-                    "Oops! There was a problem submitting your form";
-                }
-                errorStatus.style.display = "block";
-              });
-            }
-          })
-          .catch((error) => {
-            // 4. Network Error
-            errorStatus.innerHTML =
-              "Oops! There was a problem submitting your form";
-            errorStatus.style.display = "block";
-          });
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #020617;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #334155;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #fbbf24;
       }
 
-      form.addEventListener("submit", handleSubmit);
+      .chart-container {
+        position: relative;
+        width: 100%;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        height: 350px;
+        max-height: 400px;
+      }
+
+      .project-card {
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(251, 191, 36, 0.15);
+        border-color: rgba(251, 191, 36, 0.4);
+      }
+
+      /* Hide all default cursors for the Elder Wand unless disarmed */
+      body:not(.wand-dropped) * {
+        cursor: none !important;
+      }
+    </style>
+  </head>
+  <body
+    class="relative min-h-screen antialiased selection:bg-amber-500 selection:text-slate-900"
+  >
+    <!-- Custom Elder Wand Cursor -->
+    <div
+      id="elder-wand-cursor"
+      class="fixed top-0 left-0 pointer-events-none z-[9999] will-change-transform hidden"
+    >
+      <div
+        id="wand-rotator"
+        class="relative origin-[2px_2px] -rotate-45 transition-transform duration-100 ease-out"
+      >
+        <!-- Wand stick -->
+        <div
+          class="w-1.5 h-16 bg-gradient-to-b from-[#3e2723] via-[#4e342e] to-[#21120c] rounded-t-full rounded-b-sm border-x border-[#1f1209]"
+        ></div>
+        <!-- Knots (Elder wand specific) -->
+        <div
+          class="absolute top-[10px] -left-[1px] w-2 h-2.5 bg-[#3e2723] rounded-full border border-[#1f1209] shadow-sm"
+        ></div>
+        <div
+          class="absolute top-[25px] -left-[1px] w-2 h-2.5 bg-[#3e2723] rounded-full border border-[#1f1209] shadow-sm"
+        ></div>
+        <div
+          class="absolute top-[40px] -left-[1px] w-2 h-2.5 bg-[#3e2723] rounded-full border border-[#1f1209] shadow-sm"
+        ></div>
+        <div
+          class="absolute top-[55px] -left-[1px] w-2 h-2 bg-[#21120c] rounded-full border border-[#1f1209] shadow-sm"
+        ></div>
+        <!-- Magic tip -->
+        <div
+          id="wand-tip"
+          class="absolute -top-2 -left-1.5 w-4 h-4 bg-amber-100 rounded-full blur-[2px] opacity-0 transition-opacity duration-200 shadow-[0_0_15px_4px_rgba(251,191,36,0.8)]"
+        ></div>
+      </div>
+    </div>
+
+    <!-- Chosen Palette: Midnight Slate (#020617) base, Amber Gold (#fbbf24) accents, Terminal Emerald (#34d399) for CLI success, Rose (#f43f5e) for errors. -->
+
+    <!-- Application Structure Plan: The SPA uses a hybrid structural approach. The top section is a fully functional "Terminal" (CLI) acting as the primary interactive engagement hook, allowing tech-savvy users to explore via commands (like /spells, /owl). Below the terminal, the content is structured into thematic sections (The Wizard/About, Grimoire/Skills, Artifacts/Projects, Guilds/Experience) for standard scroll-based consumption. This ensures the "wow factor" of a developer CLI is present while maintaining accessibility and ease of navigation for all user types. The background features an interactive particle canvas to subtlety reinforce the magical theme without overwhelming the professional tech content. -->
+
+    <!-- Visualization & Content Choices: 
+         1. Core Stats (About): Goal - Compare core proficiencies -> Viz - Chart.js Radar Chart -> Interaction - Hover tooltips -> Justification - A radar chart perfectly visualizes a "character build" or skill distribution, fitting the nerd/gaming/magic theme while accurately representing the CV's diverse skillset. 
+         2. CLI (Hero): Goal - Inform & Engage -> Viz - Interactive DOM Terminal -> Interaction - Typing commands -> Justification - Showcases JS DOM manipulation and appeals directly to the requested "original, hacker, CLI" vibe. 
+         3. Grimoire (Skills): Goal - Organize -> Viz - Categorized HTML/Tailwind Tag grids -> Interaction - Hover highlights -> Justification - Clean, scannable grouping of languages/tools. 
+         4. Artifacts (Projects): Goal - Inform -> Viz - Grid of stylized cards -> Interaction - Hover elevation -> Justification - Standard, highly readable pattern for portfolio items. -->
+
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <canvas
+      id="magic-dust"
+      class="fixed inset-0 z-0 pointer-events-none opacity-50"
+    ></canvas>
+
+    <nav
+      class="fixed top-0 w-full bg-slate-950/80 backdrop-blur-md z-50 border-b border-slate-800 hidden md:block"
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <div
+          class="text-amber-400 font-bold tracking-widest text-lg font-serif-magic"
+        >
+          KG_
+        </div>
+        <div class="flex space-x-6 text-sm">
+          <a href="#about" class="hover:text-amber-400 transition-colors"
+            >/whoami</a
+          >
+          <a href="#grimoire" class="hover:text-amber-400 transition-colors"
+            >/spells</a
+          >
+          <a href="#artifacts" class="hover:text-amber-400 transition-colors"
+            >/artifacts</a
+          >
+          <a href="#guilds" class="hover:text-amber-400 transition-colors"
+            >/guilds</a
+          >
+          <a href="#owlery" class="hover:text-amber-400 transition-colors"
+            >/owl</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <main
+      class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-12 md:pt-28 pb-20"
+    >
+      <header class="mb-12 text-center md:text-left">
+        <h1
+          class="text-4xl md:text-6xl font-bold font-serif-magic text-white mb-4"
+        >
+          <span class="text-amber-400">Karan</span> Gandhi
+        </h1>
+        <p class="text-lg md:text-xl text-slate-400 max-w-2xl">
+          Computer Science Undergraduate @ VIT Chennai <br />
+          <span class="text-emerald-400">Avidly learning Rust</span> &#x2692;
+          Weaving scalable software systems.
+        </p>
+      </header>
+
+      <section id="terminal-section" class="mb-20">
+        <p class="text-sm text-slate-500 mb-2 italic">
+          Interaction Element: The Marauder's Terminal. Type 'help' to begin.
+        </p>
+        <div
+          class="bg-slate-900 border border-slate-700 rounded-lg shadow-2xl overflow-hidden font-mono text-sm sm:text-base"
+        >
+          <div
+            class="bg-slate-800 px-4 py-2 flex items-center gap-2 border-b border-slate-700"
+          >
+            <div class="w-3 h-3 rounded-full bg-rose-500"></div>
+            <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+            <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+            <div class="ml-4 text-slate-400 text-xs">
+              guest@karangandhi.in:~
+            </div>
+          </div>
+          <div
+            class="p-4 h-[300px] sm:h-[400px] overflow-y-auto"
+            id="term-output"
+          >
+            <div class="mb-4 text-amber-400">
+              &#x2728; Welcome to the interactive portfolio of Karan Gandhi.
+              <br />
+              Type
+              <span class="text-white bg-slate-800 px-1 rounded">help</span> for
+              a list of available incantations.
+            </div>
+          </div>
+          <div
+            class="p-4 bg-slate-900 border-t border-slate-800 flex items-center text-emerald-400"
+          >
+            <span class="mr-2">guest@hogwarts:~$</span>
+            <input
+              type="text"
+              id="cmd-input"
+              class="bg-transparent border-none outline-none text-white w-full flex-1"
+              autocomplete="off"
+              spellcheck="false"
+              autofocus
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="mb-24 pt-10 border-t border-slate-800/50">
+        <div class="mb-8">
+          <h2
+            class="text-3xl font-serif-magic text-white flex items-center gap-3"
+          >
+            <span class="text-amber-400"
+              >&#x1F9D9;&#x200D;&#x2642;&#xFE0F;</span
+            >
+            The Wizard
+          </h2>
+          <p class="mt-4 text-slate-400 leading-relaxed max-w-3xl">
+            I am a Computer Science undergraduate with a strong foundation in
+            Data Structures & Algorithms, Operating Systems, and Web
+            Development. My journey involves hands-on experience in C/C++,
+            exploring the depths of systems programming with Rust, and crafting
+            engaging frontend experiences. I am driven by a keen interest in
+            building efficient, scalable, and impactful software systems.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div class="bg-slate-900/50 p-6 rounded-xl border border-slate-800">
+            <h3
+              class="text-xl text-white mb-4 font-bold border-b border-slate-800 pb-2"
+            >
+              Academic Milestones
+            </h3>
+            <ul class="space-y-4 text-sm">
+              <li class="flex justify-between items-center">
+                <span class="text-slate-300">B.Tech CS (VIT Chennai)</span>
+                <span class="text-amber-400 font-bold">8.18 CGPA</span>
+              </li>
+              <li class="flex justify-between items-center">
+                <span class="text-slate-300">JEE Mains 2024</span>
+                <span class="text-amber-400 font-bold">96.23 %ile</span>
+              </li>
+              <li class="flex justify-between items-center">
+                <span class="text-slate-300">VITEEE 2024</span>
+                <span class="text-amber-400 font-bold">97 %ile</span>
+              </li>
+              <li class="flex justify-between items-center">
+                <span class="text-slate-300">12th Grade (CBSE)</span>
+                <span class="text-amber-400 font-bold">88.8%</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <p
+              class="text-xs text-slate-500 mb-2 text-center uppercase tracking-widest"
+            >
+              Character Attributes
+            </p>
+            <div class="chart-container">
+              <canvas id="statsChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="grimoire" class="mb-24 pt-10 border-t border-slate-800/50">
+        <h2
+          class="text-3xl font-serif-magic text-white flex items-center gap-3 mb-8"
+        >
+          <span class="text-amber-400">&#x1F4DA;</span> The Grimoire (Skills)
+        </h2>
+        <p class="mb-8 text-slate-400">
+          The languages, tools, and frameworks I use to bend machines to my
+          will.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div
+            class="bg-slate-900 p-6 rounded-xl border border-slate-800 hover:border-emerald-500/30 transition-colors"
+          >
+            <h3
+              class="text-lg text-emerald-400 mb-4 font-bold tracking-widest uppercase text-sm"
+            >
+              &#x26A1; Incantations (Languages)
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-sm border border-slate-700"
+                >Python</span
+              >
+              <span
+                class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-sm border border-slate-700"
+                >C/C++</span
+              >
+              <span
+                class="px-3 py-1 bg-amber-500/20 text-amber-400 rounded-md text-sm border border-amber-500/30 font-bold"
+                >Rust</span
+              >
+              <span
+                class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-sm border border-slate-700"
+                >JavaScript</span
+              >
+              <span
+                class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-sm border border-slate-700"
+                >Go</span
+              >
+              <span
+                class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-sm border border-slate-700"
+                >SQL</span
+              >
+            </div>
+          </div>
+
+          <div
+            class="bg-slate-900 p-6 rounded-xl border border-slate-800 hover:border-emerald-500/30 transition-colors"
+          >
+            <h3
+              class="text-lg text-emerald-400 mb-4 font-bold tracking-widest uppercase text-sm"
+            >
+              &#x2697;&#xFE0F; Potions (Frameworks)
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-sm border border-slate-700"
+                >React</span
+              >
+              <span
+                class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-sm border border-slate-700"
+                >Node.js</span
+              >
+              <span
+                class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-sm border border-slate-700"
+                >Express</span
+              >
+              <span
+                class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-sm border border-slate-700"
+                >FastAPI</span
+              >
+              <span
+                class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-sm border border-slate-700"
+                >Django</span
+              >
+            </div>
+          </div>
+
+          <div
+            class="bg-slate-900 p-6 rounded-xl border border-slate-800 hover:border-emerald-500/30 transition-colors"
+          >
+            <h3
+              class="text-lg text-emerald-400 mb-4 font-bold tracking-widest uppercase text-sm"
+            >
+              &#x1F52E; Magical Items (Tools)
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-sm border border-slate-700"
+                >Git</span
+              >
+              <span
+                class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-sm border border-slate-700"
+                >Linux</span
+              >
+              <span
+                class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-sm border border-slate-700"
+                >Docker</span
+              >
+              <span
+                class="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-sm border border-slate-700"
+                >MongoDB</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="artifacts" class="mb-24 pt-10 border-t border-slate-800/50">
+        <h2
+          class="text-3xl font-serif-magic text-white flex items-center gap-3 mb-8"
+        >
+          <span class="text-amber-400">&#x1F5FF;</span> Artifacts (Projects)
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div
+            class="project-card bg-slate-900 border border-slate-800 rounded-xl p-6 relative overflow-hidden group"
+          >
+            <div
+              class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-6xl"
+            >
+              &#x1F3DB;&#xFE0F;
+            </div>
+            <div class="flex justify-between items-start mb-4 relative z-10">
+              <h3 class="text-xl text-white font-bold">Campus360</h3>
+              <span
+                class="text-xs text-slate-500 bg-slate-950 px-2 py-1 rounded border border-slate-800"
+                >Jan 2026</span
+              >
+            </div>
+            <p class="text-slate-400 text-sm mb-6 relative z-10">
+              Implemented as an aggregator model, combining all apps into a
+              single platform. Features real-time chat support, forums, academic
+              information, and club event reminders.
+            </p>
+            <div class="flex gap-2 relative z-10">
+              <span class="text-xs text-amber-400">#WAMP</span>
+              <span class="text-xs text-amber-400">#AJAX</span>
+              <span class="text-xs text-amber-400">#WebSockets</span>
+            </div>
+          </div>
+
+          <div
+            class="project-card bg-slate-900 border border-slate-800 rounded-xl p-6 relative overflow-hidden group"
+          >
+            <div
+              class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-6xl"
+            >
+              &#x1F9E0;
+            </div>
+            <div class="flex justify-between items-start mb-4 relative z-10">
+              <h3 class="text-xl text-white font-bold">
+                At-Risk Students' Detector
+              </h3>
+              <span
+                class="text-xs text-slate-500 bg-slate-950 px-2 py-1 rounded border border-slate-800"
+                >Dec 2025</span
+              >
+            </div>
+            <p class="text-slate-400 text-sm mb-6 relative z-10">
+              Implemented K-Clustering, Random Forest, and other ML algorithms
+              to predict at-risk students based on complex academic and social
+              data structures.
+            </p>
+            <div class="flex gap-2 relative z-10">
+              <span class="text-xs text-amber-400">#ML</span>
+              <span class="text-xs text-amber-400">#FastAPI</span>
+              <span class="text-xs text-amber-400">#Django</span>
+            </div>
+          </div>
+
+          <div
+            class="project-card bg-slate-900 border border-slate-800 rounded-xl p-6 relative overflow-hidden group"
+          >
+            <div
+              class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-6xl"
+            >
+              &#x1F427;
+            </div>
+            <div class="flex justify-between items-start mb-4 relative z-10">
+              <h3 class="text-xl text-white font-bold">
+                Linux Ricing & Dotfiles
+              </h3>
+              <span
+                class="text-xs text-slate-500 bg-slate-950 px-2 py-1 rounded border border-slate-800"
+                >Ongoing</span
+              >
+            </div>
+            <p class="text-slate-400 text-sm mb-6 relative z-10">
+              Architected highly customized, aesthetically pleasing Linux
+              desktop environments. Configured window managers, terminal
+              multiplexers, and wrote shell scripts for system automation and
+              workflow enhancement.
+            </p>
+            <div class="flex gap-2 relative z-10">
+              <span class="text-xs text-amber-400">#Linux</span>
+              <span class="text-xs text-amber-400">#Bash</span>
+              <span class="text-xs text-amber-400">#WMs</span>
+            </div>
+          </div>
+
+          <div
+            class="project-card bg-slate-900 border border-slate-800 rounded-xl p-6 relative overflow-hidden group"
+          >
+            <div
+              class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-6xl"
+            >
+              &#x1F310;
+            </div>
+            <div class="flex justify-between items-start mb-4 relative z-10">
+              <h3 class="text-xl text-white font-bold">
+                Personal Portfolio Website
+              </h3>
+              <span
+                class="text-xs text-slate-500 bg-slate-950 px-2 py-1 rounded border border-slate-800"
+                >Oct 2025</span
+              >
+            </div>
+            <p class="text-slate-400 text-sm mb-6 max-w-3xl relative z-10">
+              Designed and developed a responsive personal portfolio with modern
+              UI principles. Implemented light/dark modes and heavily optimized
+              the layout for performance and accessibility standards.
+            </p>
+            <div class="flex gap-2 relative z-10">
+              <span class="text-xs text-amber-400">#HTML/CSS</span>
+              <span class="text-xs text-amber-400">#JavaScript</span>
+              <span class="text-xs text-amber-400">#Tailwind</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="guilds" class="mb-24 pt-10 border-t border-slate-800/50">
+        <h2
+          class="text-3xl font-serif-magic text-white flex items-center gap-3 mb-8"
+        >
+          <span class="text-amber-400">&#x2694;&#xFE0F;</span> Guilds & Orders
+          (Experience)
+        </h2>
+
+        <div
+          class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-700 before:to-transparent"
+        >
+          <div
+            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
+          >
+            <div
+              class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-900 text-slate-400 group-[.is-active]:text-amber-400 group-[.is-active]:border-amber-400 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors"
+            >
+              &#x1F4BB;
+            </div>
+            <div
+              class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-slate-800 bg-slate-900/50 shadow"
+            >
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="font-bold text-white text-lg">
+                  CodeChef VIT Chennai
+                </h3>
+                <span
+                  class="text-xs text-emerald-400 font-bold bg-emerald-400/10 px-2 py-1 rounded"
+                  >Present</span
+                >
+              </div>
+              <div class="text-sm text-amber-400 mb-2">Outreach Lead</div>
+              <p class="text-slate-400 text-sm">
+                Worked on competitive programming initiatives and orchestrating
+                technical projects.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
+          >
+            <div
+              class="flex items-center justify-center w-10 h-10 rounded-full border border-slate-700 bg-slate-900 text-slate-500 z-10 transition-colors"
+            >
+              &#x1F310;
+            </div>
+            <div
+              class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-slate-800 bg-slate-900/50 shadow"
+            >
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="font-bold text-white text-lg">
+                  Google Developers Group
+                </h3>
+                <span
+                  class="text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded"
+                  >2025</span
+                >
+              </div>
+              <div class="text-sm text-amber-400 mb-2">Open Source Member</div>
+              <p class="text-slate-400 text-sm">
+                Collaborated on open-source projects and actively contributed to
+                community-driven development initiatives.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
+          >
+            <div
+              class="flex items-center justify-center w-10 h-10 rounded-full border border-slate-700 bg-slate-900 text-slate-500 z-10 transition-colors"
+            >
+              &#x1F4D6;
+            </div>
+            <div
+              class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-slate-800 bg-slate-900/50 shadow"
+            >
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="font-bold text-white text-lg">
+                  Gujarati Literary Assoc.
+                </h3>
+                <span
+                  class="text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded"
+                  >2025</span
+                >
+              </div>
+              <div class="text-sm text-amber-400 mb-2">Outreach & SM Lead</div>
+              <p class="text-slate-400 text-sm">
+                Led digital outreach/content strategy. Received faculty
+                commendations for technical execution.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
+          >
+            <div
+              class="flex items-center justify-center w-10 h-10 rounded-full border border-slate-700 bg-slate-900 text-slate-500 z-10 transition-colors"
+            >
+              &#x1F3A4;
+            </div>
+            <div
+              class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-slate-800 bg-slate-900/50 shadow"
+            >
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="font-bold text-white text-lg">TEDxVITChennai</h3>
+                <span
+                  class="text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded"
+                  >2024</span
+                >
+              </div>
+              <div class="text-sm text-amber-400 mb-2">Curation Member</div>
+              <p class="text-slate-400 text-sm">
+                Conducted speaker research and assisted in rigorous event
+                planning with faculty coordination.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="owlery"
+        class="mb-12 pt-10 border-t border-slate-800/50 text-center"
+      >
+        <h2 class="text-3xl font-serif-magic text-white mb-4">
+          <span class="text-amber-400">&#x1F989;</span> Send an Owl
+        </h2>
+        <p class="text-slate-400 mb-8 max-w-xl mx-auto">
+          Whether you have a project in mind, a magical query about Rust, or
+          just want to say hi, my inbox is always open.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-4">
+          <a
+            href="mailto:karananandgandhi@gmail.com"
+            class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-lg transition-colors border border-slate-700 flex items-center gap-2"
+          >
+            &#x2709;&#xFE0F; karananandgandhi@gmail.com
+          </a>
+          <a
+            href="https://github.com/karangandhi-1712"
+            target="_blank"
+            class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-lg transition-colors border border-slate-700 flex items-center gap-2"
+          >
+            &#x1F4BB; GitHub
+          </a>
+          <a
+            href="https://linkedin.com/in/karangandhi1712"
+            target="_blank"
+            class="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-lg transition-colors border border-slate-700 flex items-center gap-2"
+          >
+            &#x1F4BC; LinkedIn
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="text-center py-8 text-slate-600 text-sm border-t border-slate-900 relative z-10 bg-slate-950"
+    >
+      <p>Mischief Managed. &copy; 2026 Karan Gandhi.</p>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Custom Elder Wand Cursor Logic
+        const wandCursor = document.getElementById("elder-wand-cursor");
+        const wandRotator = document.getElementById("wand-rotator");
+        const wandTip = document.getElementById("wand-tip");
+
+        let isWandDisarmed = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        document.addEventListener("mousemove", (e) => {
+          if (isWandDisarmed) return;
+          lastX = e.clientX;
+          lastY = e.clientY;
+          if (wandCursor.classList.contains("hidden")) {
+            wandCursor.classList.remove("hidden");
+          }
+          wandCursor.style.transform = `translate(${lastX}px, ${lastY}px)`;
+        });
+
+        document.addEventListener("mousedown", () => {
+          if (isWandDisarmed) return;
+          wandRotator.style.transform = "rotate(-65deg)"; // Flick action
+          wandTip.style.opacity = "1";
+          wandTip.style.transform = "scale(1.5)";
+        });
+
+        document.addEventListener("mouseup", () => {
+          if (isWandDisarmed) return;
+          wandRotator.style.transform = "rotate(-45deg)"; // Reset
+          wandTip.style.opacity = "0";
+          wandTip.style.transform = "scale(1)";
+        });
+
+        // Make the wand glow over interactive elements
+        const observeInteractives = () => {
+          document.querySelectorAll("a, button, input").forEach((el) => {
+            el.addEventListener("mouseenter", () => {
+              if (!isWandDisarmed) wandTip.style.opacity = "0.8";
+            });
+            el.addEventListener("mouseleave", () => {
+              if (!isWandDisarmed) wandTip.style.opacity = "0";
+            });
+          });
+        };
+        observeInteractives();
+
+        const canvas = document.getElementById("magic-dust");
+        const ctx = canvas.getContext("2d");
+        let particles = [];
+
+        function resizeCanvas() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+        window.addEventListener("resize", resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+          constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2;
+            this.speedX = Math.random() * 0.5 - 0.25;
+            this.speedY = Math.random() * -0.5 - 0.1;
+            this.opacity = Math.random() * 0.5 + 0.1;
+          }
+          update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.y < 0) {
+              this.y = canvas.height;
+              this.x = Math.random() * canvas.width;
+            }
+          }
+          draw() {
+            ctx.fillStyle = `rgba(251, 191, 36, ${this.opacity})`;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        function initParticles() {
+          particles = [];
+          const numParticles = Math.floor(
+            (canvas.width * canvas.height) / 15000,
+          );
+          for (let i = 0; i < numParticles; i++) {
+            particles.push(new Particle());
+          }
+        }
+
+        function animateParticles() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+          }
+          requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+
+        const termInput = document.getElementById("cmd-input");
+        const termOutput = document.getElementById("term-output");
+
+        function printLine(text, isHTML = false, classes = "") {
+          const div = document.createElement("div");
+          div.className = `mb-1 ${classes}`;
+          if (isHTML) {
+            div.innerHTML = text;
+          } else {
+            div.textContent = text;
+          }
+          termOutput.appendChild(div);
+          termOutput.scrollTop = termOutput.scrollHeight;
+        }
+
+        const commands = {
+          help: () => {
+            printLine("Available incantations:", false, "text-emerald-400");
+            printLine(
+              '&nbsp;&nbsp;<span class="text-amber-400">/spells</span>&nbsp;&nbsp;&nbsp;&nbsp;- Reveal technical skills and languages',
+              true,
+            );
+            printLine(
+              '&nbsp;&nbsp;<span class="text-amber-400">/artifacts</span>&nbsp;- Display created projects and systems',
+              true,
+            );
+            printLine(
+              '&nbsp;&nbsp;<span class="text-amber-400">/guilds</span>&nbsp;&nbsp;&nbsp;&nbsp;- Show experience and affiliations',
+              true,
+            );
+            printLine(
+              '&nbsp;&nbsp;<span class="text-amber-400">/owl</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Initiate contact protocol',
+              true,
+            );
+            printLine(
+              '&nbsp;&nbsp;<span class="text-amber-400">/lumos</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Cast a light (Easter Egg)',
+              true,
+            );
+            printLine(
+              '&nbsp;&nbsp;<span class="text-amber-400">expelliarmus</span>&nbsp;- Disarm the wand',
+              true,
+            );
+            printLine(
+              '&nbsp;&nbsp;<span class="text-amber-400">clear</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Clear the terminal window',
+              true,
+            );
+          },
+          "/spells": () => {
+            printLine(
+              "Casting Revelio on skills...",
+              false,
+              "text-amber-400 italic mb-2",
+            );
+            printLine(
+              "&#x25B6; Languages: Python, C/C++, Rust, JS, Go, SQL",
+              true,
+              "text-white",
+            );
+            printLine(
+              "&#x25B6; Potions: React, Node.js, Express, FastAPI, Django",
+              true,
+              "text-white",
+            );
+            printLine(
+              "&#x25B6; Artifacts: Git, Linux, Docker, MongoDB",
+              true,
+              "text-white",
+            );
+            document
+              .getElementById("grimoire")
+              .scrollIntoView({ behavior: "smooth" });
+          },
+          "/artifacts": () => {
+            printLine("Fetching project matrix...", false, "text-emerald-400");
+            printLine("1. Campus360 (WAMP, WebSockets)", false, "text-white");
+            printLine(
+              "2. At-Risk Students Detector (ML, FastAPI)",
+              false,
+              "text-white",
+            );
+            printLine(
+              "3. Linux Ricing & Dotfiles (Bash, Configs)",
+              false,
+              "text-white",
+            );
+            printLine("4. Interactive Portfolio SPA", false, "text-white");
+            document
+              .getElementById("artifacts")
+              .scrollIntoView({ behavior: "smooth" });
+          },
+          "/guilds": () => {
+            printLine(
+              "Retrieving affiliation records...",
+              false,
+              "text-emerald-400",
+            );
+            printLine(
+              "CodeChef VIT Chennai | GDG | Gujarati Lit. Assoc | TEDxVITChennai",
+              false,
+              "text-white",
+            );
+            document
+              .getElementById("guilds")
+              .scrollIntoView({ behavior: "smooth" });
+          },
+          "/owl": () => {
+            printLine(
+              "Preparing an owl for dispatch...",
+              false,
+              "text-amber-400",
+            );
+            printLine(
+              "Destination: karananandgandhi@gmail.com",
+              false,
+              "text-white",
+            );
+            document
+              .getElementById("owlery")
+              .scrollIntoView({ behavior: "smooth" });
+          },
+          "/lumos": () => {
+            printLine(
+              "Lumos Maxima!",
+              false,
+              "text-amber-400 text-glow font-bold text-xl",
+            );
+            document.body.style.transition = "background-color 1s ease";
+            document.body.style.backgroundColor = "#1e293b";
+            setTimeout(() => {
+              document.body.style.backgroundColor = "#020617";
+              printLine("Nox.", false, "text-slate-500 italic mt-2");
+            }, 3000);
+          },
+          expelliarmus: () => {
+            if (isWandDisarmed) {
+              printLine("Your wand is already gone!", false, "text-slate-500");
+              return;
+            }
+            printLine(
+              "EXPELLIARMUS!",
+              false,
+              "text-rose-500 font-bold text-xl text-glow tracking-widest",
+            );
+            printLine(
+              "The wand flew out of your hand! (Reload page to retrieve)",
+              false,
+              "text-slate-400 italic mt-1",
+            );
+
+            isWandDisarmed = true;
+            document.body.classList.add("wand-dropped"); // Restore default cursors
+
+            // Drop animation
+            wandCursor.style.transition =
+              "transform 1.2s cubic-bezier(0.55, 0.085, 0.68, 0.53), opacity 1.2s ease-in";
+            wandCursor.style.transform = `translate(${lastX + 300}px, ${window.innerHeight + 100}px)`;
+            wandCursor.style.opacity = "0";
+
+            wandRotator.style.transition = "transform 1.2s linear";
+            wandRotator.style.transform = "rotate(1080deg)";
+          },
+          experillarmus: () => commands["expelliarmus"](),
+          clear: () => {
+            termOutput.innerHTML = "";
+          },
+          sudo: () => {
+            printLine(
+              "Nice try, muggle. This incident will be reported to the Ministry of Magic.",
+              false,
+              "text-rose-500",
+            );
+          },
+        };
+
+        termInput.addEventListener("keydown", function (e) {
+          // Wand tip glows when typing
+          if (!isWandDisarmed) wandTip.style.opacity = "0.8";
+          clearTimeout(this.typingTimer);
+          this.typingTimer = setTimeout(() => {
+            if (!isWandDisarmed) wandTip.style.opacity = "0";
+          }, 300);
+
+          if (e.key === "Enter") {
+            const cmdRaw = this.value.trim();
+            const cmd = cmdRaw.toLowerCase();
+
+            if (cmdRaw !== "") {
+              printLine(
+                `guest@hogwarts:~$ ${cmdRaw}`,
+                false,
+                "text-emerald-400 mt-2 mb-1",
+              );
+
+              if (commands[cmd]) {
+                commands[cmd]();
+              } else if (cmd === "exit" || cmd === "quit") {
+                printLine(
+                  "You cannot escape the matrix.",
+                  false,
+                  "text-rose-500",
+                );
+              } else {
+                printLine(
+                  `Command not found: ${cmdRaw}. Type 'help' for a list of spells.`,
+                  false,
+                  "text-rose-500",
+                );
+              }
+            }
+            this.value = "";
+          }
+        });
+
+        const ctxRadar = document.getElementById("statsChart").getContext("2d");
+        new Chart(ctxRadar, {
+          type: "radar",
+          data: {
+            labels: [
+              "Problem Solving (DSA)",
+              "Systems & Rust",
+              "Web Dev",
+              "Leadership",
+              "Machine Learning",
+            ],
+            datasets: [
+              {
+                label: "Wizard Attributes",
+                data: [90, 80, 85, 88, 75],
+                backgroundColor: "rgba(251, 191, 36, 0.2)",
+                borderColor: "rgba(251, 191, 36, 0.8)",
+                pointBackgroundColor: "rgba(52, 211, 153, 1)",
+                pointBorderColor: "#fff",
+                pointHoverBackgroundColor: "#fff",
+                pointHoverBorderColor: "rgba(251, 191, 36, 1)",
+                borderWidth: 2,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              r: {
+                angleLines: {
+                  color: "rgba(255, 255, 255, 0.1)",
+                },
+                grid: {
+                  color: "rgba(255, 255, 255, 0.1)",
+                },
+                pointLabels: {
+                  color: "#cbd5e1",
+                  font: {
+                    family: "'Fira Code', monospace",
+                    size: 11,
+                  },
+                },
+                ticks: {
+                  display: false,
+                  min: 0,
+                  max: 100,
+                },
+              },
+            },
+            plugins: {
+              legend: {
+                display: false,
+              },
+              tooltip: {
+                backgroundColor: "rgba(15, 23, 42, 0.9)",
+                titleFont: { family: "'Fira Code', monospace", size: 13 },
+                bodyFont: { family: "'Fira Code', monospace", size: 12 },
+                padding: 10,
+                borderColor: "rgba(251, 191, 36, 0.5)",
+                borderWidth: 1,
+              },
+            },
+          },
+        });
+      });
     </script>
   </body>
 </html>

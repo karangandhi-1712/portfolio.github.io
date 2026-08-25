@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+Disallow: /server/
 Sitemap: https://karangandhi.in/sitemap.xml

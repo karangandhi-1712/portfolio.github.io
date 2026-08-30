@@ -1,8 +1,8 @@
-// server.js — serves the sepia portfolio to browsers, and a terminal-native
+// server.js — serves the dark-terminal portfolio to browsers, and a terminal-native
 // ANSI Shadow banner + text menu to curl / wget / httpie / plain terminals.
 //
 // Deploy this in front of the static files in /public (copy index.html,
-// about.html, projects.html, experience.html, contact.html, assets/ here).
+// about.html, projects.html, experience.html, contact.html, blog.html, assets/ here).
 //
 //   npm install express
 //   node server.js
@@ -17,13 +17,13 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-// ---------- sepia-ish 256-color ANSI palette ----------
+// ---------- terminal 256-color ANSI palette ----------
 const C = {
   reset: '\x1b[0m',
-  ink: '\x1b[38;5;94m',      // warm brown (headings)
-  accent: '\x1b[38;5;130m',  // rust
-  moss: '\x1b[38;5;65m',     // moss green (status/links)
-  faint: '\x1b[38;5;180m',   // sandy faint text
+  ink: '\x1b[38;5;251m',      // light grey (body text)
+  accent: '\x1b[38;5;48m',    // terminal green
+  amber: '\x1b[38;5;214m',    // amber (for WIP badges)
+  faint: '\x1b[38;5;240m',    // dim grey
   bold: '\x1b[1m',
   dim: '\x1b[2m',
 };
@@ -49,7 +49,7 @@ ${C.ink}${C.bold} ██████╗  █████╗ ███╗   █�
 const PAGES = {
   home: () => `${BANNER}
 ${C.faint}Computer Science undergraduate · VIT Chennai${C.reset}
-${C.moss}● Open to opportunities${C.reset}
+${C.accent}● Open to opportunities${C.reset}
 
 ${C.ink}${C.bold}whoami${C.reset}
   Building software that runs machines, not just screens.
@@ -77,6 +77,22 @@ ${menu()}
 `,
 
   projects: () => `${section('PROJECTS')}
+${C.accent}${C.bold}// Featured — Robotics${C.reset}
+
+${C.ink}${C.bold}vector_AGVsim${C.reset}                                 ${C.dim}2026${C.reset}
+  AGV/robot simulation (Vector Robotics internship).
+  Gazebo Harmonic, URDF/Xacro, ROS2 control interfaces.
+  ${C.faint}Python · ROS2 · SLAM · Gazebo Harmonic${C.reset}
+  ${C.accent}https://github.com/karangandhi-1712/vector_AGVsim${C.reset}
+
+${C.ink}${C.bold}vectorbot_in_warehouse${C.reset}                       ${C.dim}2026${C.reset}
+  Warehouse robot navigation/simulation — SLAM + path
+  planning in constrained indoor environments.
+  ${C.faint}Python · ROS2 · SLAM · Navigation${C.reset}
+  ${C.accent}https://github.com/karangandhi-1712/vectorbot_in_warehouse${C.reset}
+
+${C.accent}${C.bold}// Established${C.reset}
+
 ${C.ink}${C.bold}Campus360${C.reset}                                    ${C.dim}Jan 2026${C.reset}
   Centralized campus platform — forums, resources, real-time
   chat, event reminders. Low-latency messaging via WebSockets.
@@ -87,11 +103,24 @@ ${C.ink}${C.bold}At-Risk Students' Detector${C.reset}                   ${C.dim}
   and Django backends for model integration.
   ${C.faint}Machine Learning · FastAPI · Django${C.reset}
 
-${C.ink}${C.bold}Personal Portfolio Website${C.reset}                   ${C.dim}Oct 2025${C.reset}
-  Responsive portfolio with dark/light mode switching.
-  ${C.faint}HTML · CSS · JavaScript${C.reset}
+${C.accent}${C.bold}// Experiments${C.reset}
 
-  More: ${C.moss}https://github.com/karangandhi-1712${C.reset}
+${C.ink}${C.bold}lidar_workspace${C.reset}
+  Hands-on test of real-time LiDAR data visualization in RViz.
+  ${C.faint}Python${C.reset}
+
+${C.amber}${C.bold}// Currently Building${C.reset}
+
+${C.ink}${C.bold}LogiSync${C.reset} ${C.amber}[WIP]${C.reset}
+  Currently scoping — ML-driven logistics tracking for smart
+  cities. Architecture TBD.
+
+${C.ink}${C.bold}YT Music Segregator${C.reset} ${C.amber}[WIP]${C.reset}
+  Working utility that segregates liked YouTube Music songs by
+  language (Hindi / non-Hindi). Long-term idea: extend into a
+  more complete music experience.
+
+  More: ${C.accent}https://github.com/karangandhi-1712${C.reset}
 
 ${menu()}
 `,
@@ -120,13 +149,24 @@ ${C.ink}${C.bold}Achievements${C.reset}
 ${menu()}
 `,
 
+  blog: () => `${section('BLOG')}
+  ${C.faint}Posts coming soon.${C.reset}
+
+  I'm working on writing about ROS2 workflows, systems-level
+  debugging, and lessons from building things.
+
+  ${C.accent}In the meantime, try: curl karangandhi.in/projects${C.reset}
+
+${menu()}
+`,
+
   contact: () => `${section('CONTACT')}
   Open to internships, collaborations, and anything involving
   robotics, Rust, or systems software.
 
-  ${C.moss}Email${C.reset}     karananandgandhi@gmail.com
-  ${C.moss}GitHub${C.reset}    https://github.com/karangandhi-1712
-  ${C.moss}LinkedIn${C.reset}  https://linkedin.com/in/karangandhi1712
+  ${C.accent}Email${C.reset}     karananandgandhi@gmail.com
+  ${C.accent}GitHub${C.reset}    https://github.com/karangandhi-1712
+  ${C.accent}LinkedIn${C.reset}  https://linkedin.com/in/karangandhi1712
 
   ${C.dim}curl -X POST karangandhi.in/contact -d "message=hi"${C.reset}
   ${C.dim}(wires to the same Formspree endpoint as the web form)${C.reset}
@@ -139,9 +179,10 @@ ${C.ink}${C.bold}Navigate this site from your terminal:${C.reset}
 
   curl karangandhi.in                curl karangandhi.in/about
   curl karangandhi.in/projects        curl karangandhi.in/experience
-  curl karangandhi.in/contact         curl karangandhi.in/help
+  curl karangandhi.in/blog            curl karangandhi.in/contact
+  curl karangandhi.in/help
 
-  ${C.faint}(open in a browser instead for the full sepia site)${C.reset}
+  ${C.faint}(open in a browser instead for the full dark-terminal site)${C.reset}
 `,
 };
 
@@ -151,7 +192,7 @@ function section(title) {
 
 function menu() {
   return `${C.dim}────────────────────────────────────────────${C.reset}
-${C.faint}Navigate:${C.reset} ${C.moss}/about${C.reset}  ${C.moss}/projects${C.reset}  ${C.moss}/experience${C.reset}  ${C.moss}/contact${C.reset}  ${C.moss}/help${C.reset}
+${C.faint}Navigate:${C.reset} ${C.accent}/about${C.reset}  ${C.accent}/projects${C.reset}  ${C.accent}/experience${C.reset}  ${C.accent}/blog${C.reset}  ${C.accent}/contact${C.reset}  ${C.accent}/help${C.reset}
 ${C.dim}e.g.  curl karangandhi.in/projects${C.reset}`;
 }
 
@@ -169,7 +210,7 @@ app.use((req, res, next) => {
   if (isTerminalClient(req)) {
     res.set('Content-Type', 'text/plain; charset=utf-8');
     const route = req.path.replace(/^\//, '').split('/')[0] || 'home';
-    const page = PAGES[route] || (() => `${C.accent}404${C.reset} — try ${C.moss}curl karangandhi.in/help${C.reset}\n`);
+    const page = PAGES[route] || (() => `${C.accent}404${C.reset} — try ${C.accent}curl karangandhi.in/help${C.reset}\n`);
     return res.status(PAGES[route] ? 200 : 404).send(page());
   }
   next();

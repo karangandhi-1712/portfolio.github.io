@@ -7,11 +7,26 @@
 <link rel="manifest" href="/assets/site.webmanifest">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Karan Gandhi — Computer Science Engineer</title>
-<meta name="description" content="Karan Gandhi — Computer Science undergraduate at VIT Chennai. Robotics software, systems programming, and full-stack development.">
+<title>Karan Gandhi — Robotics & Systems Engineer</title>
+<meta name="description" content="Karan Gandhi — CS undergraduate at VIT Chennai. Robotics software (ROS2, SLAM), systems programming (Rust, C++), and full-stack development.">
+<link rel="canonical" href="https://karangandhi.in/">
+<meta name="author" content="Karan Gandhi">
+<meta name="theme-color" content="#0a0a0f">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://karangandhi.in/">
+<meta property="og:title" content="Karan Gandhi — Robotics & Systems Engineer">
+<meta property="og:description" content="Karan Gandhi — CS undergraduate at VIT Chennai. Robotics software (ROS2, SLAM), systems programming (Rust, C++), and full-stack development.">
+<meta property="og:image" content="https://karangandhi.in/assets/android-chrome-512x512.png">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary">
+<meta property="twitter:url" content="https://karangandhi.in/">
+<meta property="twitter:title" content="Karan Gandhi — Robotics & Systems Engineer">
+<meta property="twitter:description" content="Karan Gandhi — CS undergraduate at VIT Chennai. Robotics software (ROS2, SLAM), systems programming (Rust, C++), and full-stack development.">
+<meta property="twitter:image" content="https://karangandhi.in/assets/android-chrome-512x512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;0,9..144,700;1,9..144,450;1,9..144,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
@@ -24,6 +39,7 @@
       <a href="/about/">About</a>
       <a href="/projects/">Projects</a>
       <a href="/experience/">Experience</a>
+      <a href="/blog/">Blog</a>
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav-cta">
@@ -40,7 +56,7 @@
     <div class="wrap hero-grid">
       <div>
         <p class="eyebrow">Computer Science · VIT Chennai</p>
-        <h1>Building software that runs machines, <span class="accent">not just screens.</span></h1>
+        <h1>Building software that runs machines, <span class="accent cursor-blink">not just screens.</span></h1>
         <p class="lede">I'm a CS undergraduate working across robotics software, systems programming in Rust and C++, and full-stack web development. Most recently, I built ROS2 navigation stacks at Vector Robotics.</p>
         <div class="hero-actions">
           <a href="/projects/" class="btn btn-primary">View my work</a>
@@ -57,8 +73,6 @@
     </div>
   </section>
 
-
-
   <!-- FEATURED WORK -->
   <section class="section section-border">
     <div class="wrap">
@@ -71,22 +85,30 @@
       </div>
       <div class="card-grid">
         <div class="card reveal">
+          <div class="card-date">2026 · Vector Robotics</div>
+          <h3>vector_AGVsim</h3>
+          <p>AGV/robot simulation built during my internship — high-fidelity Gazebo Harmonic environments with URDF/Xacro models and ROS2 control interfaces for autonomous navigation.</p>
+          <div class="tag-list">
+            <span class="tag">Python</span><span class="tag">ROS2</span><span class="tag">SLAM</span><span class="tag">Gazebo</span>
+          </div>
+          <a href="https://github.com/karangandhi-1712/vector_AGVsim" class="card-link" target="_blank" rel="noopener">View repo <span class="arrow">→</span></a>
+        </div>
+        <div class="card reveal">
+          <div class="card-date">2026 · Vector Robotics</div>
+          <h3>vectorbot_in_warehouse</h3>
+          <p>Warehouse robot navigation and simulation — applying SLAM algorithms and path planning in a constrained indoor environment using the ROS2 stack.</p>
+          <div class="tag-list">
+            <span class="tag">Python</span><span class="tag">ROS2</span><span class="tag">SLAM</span><span class="tag">Navigation</span>
+          </div>
+          <a href="https://github.com/karangandhi-1712/vectorbot_in_warehouse" class="card-link" target="_blank" rel="noopener">View repo <span class="arrow">→</span></a>
+        </div>
+        <div class="card reveal">
           <div class="card-date">Jan 2026</div>
           <h3>Campus360</h3>
           <p>A centralized campus platform integrating forums, resources, real-time chat, and event reminders with low-latency WebSocket messaging.</p>
-          <div class="tag-list"><span class="tag">WAMP</span><span class="tag">AJAX</span><span class="tag">WebSockets</span></div>
-        </div>
-        <div class="card reveal">
-          <div class="card-date">Dec 2025</div>
-          <h3>At-Risk Students' Detector</h3>
-          <p>An ML prediction system using Random Forest and K-Means clustering, with FastAPI and Django backends for model integration.</p>
-          <div class="tag-list"><span class="tag">Machine Learning</span><span class="tag">FastAPI</span><span class="tag">Django</span></div>
-        </div>
-        <div class="card reveal">
-          <div class="card-date">Oct 2025</div>
-          <h3>Personal Portfolio Website</h3>
-          <p>A responsive portfolio with dark/light mode switching, built and deployed with an eye on frontend performance.</p>
-          <div class="tag-list"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+          <div class="tag-list">
+            <span class="tag">WAMP</span><span class="tag">AJAX</span><span class="tag">WebSockets</span>
+          </div>
         </div>
       </div>
     </div>
@@ -129,8 +151,9 @@
     <p>© 2026 Karan Gandhi. Chennai, India.</p>
     <div class="footer-links">
       <a href="mailto:karananandgandhi@gmail.com">Email</a>
-      <a href="https://github.com/karangandhi-1712">GitHub</a>
-      <a href="https://linkedin.com/in/karangandhi1712">LinkedIn</a>
+      <a href="https://github.com/karangandhi-1712" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/karangandhi1712" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/karangandhi-1712/portfolio.github.io" target="_blank" rel="noopener">Source</a>
     </div>
   </div>
 </footer>

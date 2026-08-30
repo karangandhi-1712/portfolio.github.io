@@ -1,4 +1,11 @@
+# https://karangandhi.in/robots.txt
 User-agent: *
 Allow: /
+Allow: /assets/
 Disallow: /server/
+Disallow: /scratch/
+Disallow: /.git/
+
+# Host & Sitemap
+Host: https://karangandhi.in
 Sitemap: https://karangandhi.in/sitemap.xml

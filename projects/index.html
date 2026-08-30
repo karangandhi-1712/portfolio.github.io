@@ -8,10 +8,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projects — Karan Gandhi</title>
-<meta name="description" content="Projects by Karan Gandhi — Campus360, At-Risk Students' Detector, and more.">
+<meta name="description" content="Projects by Karan Gandhi — ROS2 robotics simulations, full-stack platforms, ML systems, and more.">
+<link rel="canonical" href="https://karangandhi.in/projects/">
+<meta name="author" content="Karan Gandhi">
+<meta name="theme-color" content="#0a0a0f">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://karangandhi.in/projects/">
+<meta property="og:title" content="Projects — Karan Gandhi">
+<meta property="og:description" content="Projects by Karan Gandhi — ROS2 robotics simulations, full-stack platforms, ML systems, and more.">
+<meta property="og:image" content="https://karangandhi.in/assets/android-chrome-512x512.png">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary">
+<meta property="twitter:url" content="https://karangandhi.in/projects/">
+<meta property="twitter:title" content="Projects — Karan Gandhi">
+<meta property="twitter:description" content="Projects by Karan Gandhi — ROS2 robotics simulations, full-stack platforms, ML systems, and more.">
+<meta property="twitter:image" content="https://karangandhi.in/assets/android-chrome-512x512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;0,9..144,700;1,9..144,450;1,9..144,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
@@ -24,6 +39,7 @@
       <a href="/about/">About</a>
       <a href="/projects/" aria-current="page">Projects</a>
       <a href="/experience/">Experience</a>
+      <a href="/blog/">Blog</a>
       <a href="/contact/">Contact</a>
     </nav>
     <div class="nav-cta">
@@ -39,45 +55,150 @@
     <div class="wrap">
       <p class="eyebrow">Projects</p>
       <h1>Things I've built end to end.</h1>
-      <p>From real-time platforms to ML pipelines — a working record of what I've shipped, mostly outside the classroom.</p>
+      <p>From ROS2 simulations to full-stack platforms — a working record of what I've shipped, mostly outside the classroom.</p>
     </div>
   </section>
 
-  <section class="section">
+  <!-- FEATURED: ROBOTICS -->
+  <section class="section section-border">
     <div class="wrap">
-      <div class="card-grid">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow">Featured — Robotics</p>
+          <h2 class="section-title">Simulation &amp; navigation work</h2>
+        </div>
+      </div>
+      <div class="featured-grid">
+
+        <!-- vector_AGVsim -->
+        <div class="featured-card reveal">
+          <div class="card-tab">
+            <span class="dot"></span>
+            <span class="filename">vector_AGVsim</span>
+            <span class="lang">Python</span>
+          </div>
+          <div class="media-slot" aria-label="Simulation preview placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
+            </svg>
+            <span>Simulation preview coming soon</span>
+          </div>
+          <div class="card-body">
+            <h3>vector_AGVsim</h3>
+            <p>AGV/robot simulation built during my Vector Robotics internship. High-fidelity Gazebo Harmonic environments with URDF/Xacro models, ROS2 control hardware interfaces, and tuned rigid-body kinematics for autonomous navigation testing.</p>
+            <div class="tag-list">
+              <span class="tag">Python</span><span class="tag">ROS2</span><span class="tag">SLAM</span><span class="tag">Gazebo Harmonic</span><span class="tag">URDF/Xacro</span>
+            </div>
+            <a href="https://github.com/karangandhi-1712/vector_AGVsim" class="card-link" target="_blank" rel="noopener">View on GitHub <span class="arrow">→</span></a>
+          </div>
+        </div>
+
+        <!-- vectorbot_in_warehouse -->
+        <div class="featured-card reveal">
+          <div class="card-tab">
+            <span class="dot"></span>
+            <span class="filename">vectorbot_in_warehouse</span>
+            <span class="lang">Python</span>
+          </div>
+          <div class="media-slot" aria-label="Simulation preview placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
+            </svg>
+            <span>Simulation preview coming soon</span>
+          </div>
+          <div class="card-body">
+            <h3>vectorbot_in_warehouse</h3>
+            <p>Warehouse robot navigation and simulation — applying SLAM algorithms and path planning in a constrained indoor environment using the ROS2 stack. Same internship context as vector_AGVsim.</p>
+            <div class="tag-list">
+              <span class="tag">Python</span><span class="tag">ROS2</span><span class="tag">SLAM</span><span class="tag">Navigation</span>
+            </div>
+            <a href="https://github.com/karangandhi-1712/vectorbot_in_warehouse" class="card-link" target="_blank" rel="noopener">View on GitHub <span class="arrow">→</span></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ESTABLISHED PROJECTS -->
+  <section class="section section-border">
+    <div class="wrap">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow">Established</p>
+          <h2 class="section-title">Full-stack &amp; ML projects</h2>
+        </div>
+      </div>
+      <div class="card-grid card-grid-2">
         <div class="card reveal">
           <div class="card-date">Jan 2026</div>
           <h3>Campus360</h3>
           <p>Built a centralized campus platform integrating forums, resources, real-time chat, and event reminders. Implemented low-latency real-time messaging using WebSockets so activity across the platform updates instantly.</p>
           <div class="tag-list"><span class="tag">WAMP</span><span class="tag">AJAX</span><span class="tag">WebSockets</span></div>
         </div>
-
         <div class="card reveal">
           <div class="card-date">Dec 2025</div>
           <h3>At-Risk Students' Detector</h3>
           <p>Developed an ML-based prediction system using Random Forest and K-Means clustering to flag at-risk students from academic and social data. Built the backend APIs with FastAPI and Django for predictive model integration.</p>
           <div class="tag-list"><span class="tag">Machine Learning</span><span class="tag">FastAPI</span><span class="tag">Django</span></div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="card reveal">
-          <div class="card-date">Oct 2025</div>
-          <h3>Personal Portfolio Website</h3>
-          <p>Developed and deployed a responsive portfolio website featuring dark/light mode switching, with the frontend optimized specifically for responsiveness and load performance.</p>
-          <div class="tag-list"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+  <!-- EXPERIMENTS -->
+  <section class="section section-border">
+    <div class="wrap">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow">Experiments</p>
+          <h2 class="section-title">Smaller explorations</h2>
+        </div>
+      </div>
+      <div class="experiment-list reveal">
+        <div class="experiment-item">
+          <span class="exp-name">lidar_workspace</span>
+          <span class="exp-desc">A hands-on test of real-time LiDAR data visualization in RViz — exploring whether sensor updates render live.</span>
+          <span class="exp-lang">Python</span>
+          <a href="https://github.com/karangandhi-1712/lidar_workspace" target="_blank" rel="noopener">Repo →</a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- CURRENTLY BUILDING -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-header reveal">
+        <div>
+          <p class="eyebrow">Currently building</p>
+          <h2 class="section-title">Work in progress</h2>
+        </div>
+      </div>
+      <div class="wip-grid">
+        <div class="wip-card reveal">
+          <div class="wip-badge">In progress</div>
+          <h3>LogiSync</h3>
+          <p>Currently scoping — ML-driven logistics tracking for smart cities. Architecture TBD.</p>
+        </div>
+        <div class="wip-card reveal">
+          <div class="wip-badge">In progress</div>
+          <h3>YT Music Segregator</h3>
+          <p>Working utility that segregates a user's liked YouTube Music songs by language (Hindi / non-Hindi). Long-term idea: extend this into a more complete music experience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GITHUB CTA -->
   <section class="section section-border" style="padding-top:0;">
     <div class="wrap">
       <div class="hero-card reveal" style="display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;">
         <div>
           <h3 style="margin-bottom:6px;">More on GitHub</h3>
-          <p style="color:var(--ink-soft); margin:0; max-width:48ch;">Smaller experiments, coursework, and work-in-progress repos live here.</p>
+          <p style="color:var(--ink-soft); margin:0; max-width:48ch;">Other experiments, coursework, and work-in-progress repos live here.</p>
         </div>
-        <a href="https://github.com/karangandhi-1712" class="btn btn-primary">Visit GitHub →</a>
+        <a href="https://github.com/karangandhi-1712" class="btn btn-primary" target="_blank" rel="noopener">Visit GitHub →</a>
       </div>
     </div>
   </section>
@@ -88,8 +209,9 @@
     <p>© 2026 Karan Gandhi. Chennai, India.</p>
     <div class="footer-links">
       <a href="mailto:karananandgandhi@gmail.com">Email</a>
-      <a href="https://github.com/karangandhi-1712">GitHub</a>
-      <a href="https://linkedin.com/in/karangandhi1712">LinkedIn</a>
+      <a href="https://github.com/karangandhi-1712" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/karangandhi1712" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/karangandhi-1712/portfolio.github.io" target="_blank" rel="noopener">Source</a>
     </div>
   </div>
 </footer>

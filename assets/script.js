@@ -14,7 +14,9 @@ if (navToggle && navLinks) {
 
 // ---------- scroll reveal ----------
 const revealEls = document.querySelectorAll('.reveal');
-if ('IntersectionObserver' in window) {
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (!prefersReducedMotion && 'IntersectionObserver' in window) {
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
@@ -22,7 +24,15 @@ if ('IntersectionObserver' in window) {
   }, { threshold: 0.12 });
   revealEls.forEach(el => io.observe(el));
 } else {
+  // If reduced motion is preferred or no IntersectionObserver, show everything immediately
   revealEls.forEach(el => el.classList.add('in'));
+}
+
+// ---------- disable cursor blink for reduced motion ----------
+if (prefersReducedMotion) {
+  document.querySelectorAll('.cursor-blink').forEach(el => {
+    el.classList.remove('cursor-blink');
+  });
 }
 
 // ---------- Formspree contact form ----------

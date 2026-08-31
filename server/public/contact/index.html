@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+<link rel="manifest" href="/assets/site.webmanifest">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Karan Gandhi</title>
+<meta name="description" content="Get in touch with Karan Gandhi — open to internships, collaborations, and robotics/systems projects.">
+<link rel="canonical" href="https://karangandhi.in/contact/">
+<meta name="author" content="Karan Gandhi">
+<meta name="theme-color" content="#0a0a0f">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://karangandhi.in/contact/">
+<meta property="og:title" content="Contact — Karan Gandhi">
+<meta property="og:description" content="Get in touch with Karan Gandhi — open to internships, collaborations, and robotics/systems projects.">
+<meta property="og:image" content="https://karangandhi.in/assets/android-chrome-512x512.png">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary">
+<meta property="twitter:url" content="https://karangandhi.in/contact/">
+<meta property="twitter:title" content="Contact — Karan Gandhi">
+<meta property="twitter:description" content="Get in touch with Karan Gandhi — open to internships, collaborations, and robotics/systems projects.">
+<meta property="twitter:image" content="https://karangandhi.in/assets/android-chrome-512x512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="/" class="logo"><span class="mark">KG</span> Karan Gandhi</a>
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/about/">About</a>
+      <a href="/projects/">Projects</a>
+      <a href="/experience/">Experience</a>
+      <a href="/blog/">Blog</a>
+      <a href="/contact/" aria-current="page">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/assets/KaranGandhi_CV.pdf" class="btn btn-outline" target="_blank" rel="noopener">Resume</a>
+      <a href="/contact/" class="btn btn-primary">Get in touch</a>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="page-header">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h1>Let's talk.</h1>
+      <p>Open to internships, collaborations, and anything involving robotics, Rust, or systems software.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap contact-grid">
+      <div class="contact-info reveal">
+        <h2>Direct lines</h2>
+        <p>Prefer email or a quick message — I read everything that lands here and reply within a day or two.</p>
+        <div class="contact-list">
+          <a href="mailto:karananandgandhi@gmail.com">Email <span class="arrow">→</span></a>
+          <a href="https://github.com/karangandhi-1712" target="_blank" rel="noopener">GitHub <span class="arrow">→</span></a>
+          <a href="https://linkedin.com/in/karangandhi1712" target="_blank" rel="noopener">LinkedIn <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <form id="contact-form" class="contact-form reveal">
+        <!-- Honeypot field: invisible to people, bots that auto-fill every
+             input will trip it and Formspree discards the submission. -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="_gotcha">Leave this field empty</label>
+          <input type="text" name="_gotcha" id="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="form-row">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required autocomplete="name">
+        </div>
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="_replyto" required autocomplete="email">
+        </div>
+        <div class="form-row">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <!-- keeps Formspree's confirmation email subject line readable -->
+        <input type="hidden" name="_subject" value="New message from karangandhi.in">
+
+        <button type="submit" class="btn btn-primary" style="width:100%;">Send message</button>
+        <p id="form-status" class="form-status" role="status"></p>
+
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <p>© 2026 Karan Gandhi. Chennai, India.</p>
+    <div class="footer-links">
+      <a href="mailto:karananandgandhi@gmail.com">Email</a>
+      <a href="https://github.com/karangandhi-1712" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/karangandhi1712" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/karangandhi-1712/portfolio.github.io" target="_blank" rel="noopener">Source</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/script.js"></script>
+</body>
+</html>
